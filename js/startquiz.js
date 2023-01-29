@@ -22,6 +22,7 @@ var nombreDeManches = 10;
 function startGame(){
     currentManche++;
     document.getElementById("gameContainer").style.display = "block";
+    document.getElementById("btnP").style.display = "block";
     clearAnswerInput()
     manchevalue.innerText = currentManche;
     maxmanchevalue.innerText = nombreDeManches;
