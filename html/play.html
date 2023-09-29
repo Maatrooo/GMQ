@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GMQ - Play</title>
+	<link rel="icon" type="image/png" href="../image/Logo.png" />
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<script src="../js/timer.js"></script>
+	<script src="../js/startquiz.js"></script>
+	<script src="../js/video-player.js"></script>
+	<script src="../js/checkAnswer.js"></script>
+</head>
+
+<body onload="chooseRandomVideo();", onload="setTimeout();", onload = "startQuiz();", onload = "afficheS();", onload="startTimer();", onload="mu();">
+	<div id="btnP">
+		<a class="boutonP" href="../index.html">Accueil</a>
+		<button id="startBtn" onclick="startGame();">Start</button>
+	</div>	
+
+<div id="gameContainer" style="display: none;">	 
+
+	<p id="manche-display"><span id="manchevalue"></span> / <span id="maxmanchevalue"></span> </p>
+
+
+	<div class="FormatTextP">
+		<div class="timerP" id="timer-display"></div>
+
+		<div><p id="videoName"></p></div>
+	</div>
+
+    <div id="videoPlayer">
+        <p id="score-display">Score : <span id="scorevalue">0</span></p>
+
+        <video id="videoSource" style="visibility: hidden;" >
+            <source id="videoSource" type="video/mp4">
+        </video>
+    </div>
+	<div>
+		<input type="range" id="volume" min="0" max="100" value="50" step="1" oninput="setVolume()">
+		<script>
+			var video = document.getElementById("videoSource");
+			var volume = document.getElementById("volume");
+			var muteIcon = document.getElementById("mute-icon");
+	
+			function setVolume() {
+				video.volume = volume.value / 100;
+			}
+	
+			function toggleMute() {
+				if (video.muted) {
+					video.muted = false;
+					muteIcon.src = "../image/unmute.png";
+				} else {
+					video.muted = true;
+					muteIcon.src = "../image/mute.png";
+				}
+			}
+	
+			volume.addEventListener("input", setVolume);
+		</script>
+	</div>
+	
+
+
+	<div id="answer-form">
+		<input class="Reponse1" type="text" id="answer-input" name="answer" onkeyup="searchVideos()"></input>
+		
+	</div>
+	
+	<ul id="searchresults"></ul>
+
+
+</div>
+</body>
+
+
+</html>
