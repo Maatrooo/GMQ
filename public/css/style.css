@@ -1,0 +1,401 @@
+
+/*Header*/
+header
+{
+	background-color: #3b3b3b;
+	color: white;
+	width: 100%;
+	margin: 0;
+}
+
+.img-header
+{
+	width: 100%;
+
+}
+
+/*Body*/
+
+/* Sert a bloquer le scroll */
+
+html,body  
+{  
+overflow:hidden;  
+}
+
+
+body
+{
+	font-family: 'larsseitregular', sans-serif;
+	margin: 0;
+    background-color: #585858;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+main{
+	min-height: 160vh;
+	text-align: center;
+}
+
+
+#acceuil{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 5%;
+  }
+
+.boutonP {
+background-color: #3b3b3b;
+border: none;
+color: white;
+padding: 1% 2% 1% 2%;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 2rem;
+margin: auto;
+position: sticky;
+
+}
+
+.boutonP:hover {
+	background-color: #818181;
+
+}
+
+.boutonP strong {
+	font-size: 1.5rem;
+
+}
+
+.boutonAcceuil {
+	background-color: #3b3b3b;
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	padding: 1% 2% 1% 2%;
+	font-size: 2rem;
+	border-radius: 2rem;
+	margin-top: 2%
+
+	}
+	
+	.boutonAcceuil:hover {
+		background-color: #818181;
+		
+	
+	}
+	
+	.boutonAcceuil strong {
+		font-size: 1.5rem;
+	
+	}
+
+.boutonLibrary {
+	background-color: #3b3b3b;
+	border: none;
+	color: white;
+	padding: 1% 2% 1% 2%;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 2rem;
+	margin: auto;
+	position: sticky;
+		
+		
+		}
+		
+		.boutonLibrary:hover {
+			background-color: #818181;
+		
+		}
+		
+		.boutonLibrary strong {
+			font-size: 1.5rem;
+		
+		}
+
+
+#startBtn{
+background-color: #3b3b3b;
+border: none;
+color: white;
+padding: 1% 2% 1% 2%; 
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 2rem;
+margin: auto;
+position: sticky;
+
+
+	
+	
+	}
+	#startBtn:hover {
+		background-color: #818181;
+	
+	}
+	
+	#startBtn strong {
+		font-size: 1.5rem;
+	
+	}
+
+#btnP{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	row-gap: 10px;
+}
+
+#videoSource{
+	block-size: 300px;
+	display: block;
+	margin-top: 3%;
+	margin-left:auto;
+	margin-right:auto;
+	border : 7px solid #818181;
+	height: auto;
+	width: 23%;
+
+	
+}
+
+#videoPlayer{
+	height: 45%;
+	width: auto;
+}
+
+
+
+#videoName{
+	display: none;
+	color: aliceblue;
+	margin-left:auto;
+	margin-right:auto;
+	position: sticky;
+	text-align: center;
+	text-decoration: none;
+	z-index: 1;
+	font-size: 35px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+
+.timerP{
+	color: aliceblue;
+	display: block;
+	margin-left:auto;
+	margin-right:auto;
+	position: sticky;
+	text-align: center;
+	text-decoration: none;
+	z-index: 1;
+	font-size: 35px;
+
+}
+
+.FormatTextP{
+	height: 10%;
+
+}
+
+.Reponse1{
+	display: block;
+	margin-top: 3%;
+	margin-left:auto;
+	margin-right:auto;
+	position: sticky;
+	text-align: center;
+	text-decoration: none;
+	z-index: 2;
+	font-size: 30px;
+}
+
+
+#answer-form
+{
+	display: block;
+	margin-left:auto;
+	margin-right:auto;
+	width: 32%;
+}
+
+#score-display{
+	color: aliceblue;
+	position: absolute;
+	margin-left:auto;
+	margin-right:auto;
+	font-size: 35px;
+}
+
+
+#volume{
+	position: absolute;
+	right: 20px;
+	top: 20px
+}
+
+#manche-display{
+	display: block;
+	text-align: center;
+	font-size: 30px;
+	color: aliceblue;
+	width: 100%;
+}
+
+#searchresults{
+	display: none;
+	text-align: center;
+	color: aliceblue;
+	border: 2px solid #3b3b3b;
+	border-radius: 10px;
+	font-size: 20px;
+	margin-right: 40%;
+	margin-left: 40%;
+	padding: 0%;
+	overflow-y: scroll;
+	max-height: 200px; 
+	
+}
+
+#VideoSelec{
+	background-color: black;
+	display: block;
+	width: 25%;
+	height: auto;
+	margin-top: 3%;
+	margin-left:5%;
+	margin-right:auto;
+	border : 7px solid #818181;
+	position: absolute;
+
+}
+
+#scrollable-area {
+	height: 300px; /* Hauteur maximale de la zone de défilement */
+	overflow-y: scroll; /* Activer le défilement vertical */
+	position: absolute;
+	display: block;
+	margin-left: 70%;
+	margin-top: 3%;	
+	color: aliceblue;
+  }
+
+
+.highlight {
+    background-color: rgb(126, 121, 121);
+    font-weight: bold;
+	border-radius: 10px;
+}
+
+#option{
+	margin-top: 5%;
+	border-color: #818181;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+  
+
+@media only screen and (max-width: 768px) {
+
+	html,body  
+	{  
+	overflow: visible;  
+	}
+
+	#VideoSelec{
+		display: block;
+		height: auto;
+		width: 80%;
+		margin-left:auto;
+		margin-right:auto;
+		position: sticky;
+	}
+
+	#scrollable-area {
+		display: block;
+		height: auto;
+		color: aliceblue;
+		margin: 0%;
+		position: relative ;
+	  }
+
+	#score-display{
+		display: inline;
+		position: absolute;
+		margin-top: -29%;
+		font-size: 150%;
+	}
+	#videoSource{
+		display: block;
+		height: auto;
+		width: 80%;
+		margin-left:auto;
+		margin-right:auto;
+		position: sticky;
+	}
+	#answer-form{
+		display: block;
+		position: sticky;
+		margin-left:auto;
+		margin-right:auto;
+		width: auto;
+	}
+	#searchresults{
+		display: none;
+		position: sticky;
+		margin-left:auto;
+		margin-right:auto;
+		width: auto;
+	}
+	
+  }
+
+  
+  /* Webkit browsers */
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #585858;
+	border-radius: 20px;
+}
+ 
+/* Webkit browsers */
+::-webkit-scrollbar-thumb {
+  background-color: #3b3b3b;
+  border-radius: 10px;
+}
+
+/* Webkit browsers */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #818181;
+}
+
+/* Firefox */
+scrollbar {
+    width: 12px;
+    background-color: #585858;
+}
+
+/* Firefox */
+scrollbar-thumb {
+  background-color: #3b3b3b;
+  border-radius: 10px;
+}
+
+/* Firefox */
+scrollbar-thumb:hover {
+  background-color: #818181;
+}
