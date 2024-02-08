@@ -32,7 +32,7 @@ function joinRoom(roomId) {
   
   // Écoutez l'événement "listRooms" pour afficher la liste des salles
   socket.on('listRooms', (rooms) => {
-    const roomsList = document.querySelector('#rooms-list');
+    const roomsList = document.querySelector('#roomsList');
     roomsList.innerHTML = ''; // Effacez la liste actuelle des salles
   
     rooms.forEach((room) => {

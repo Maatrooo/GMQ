@@ -2,19 +2,33 @@
 <html>
 <head>
     <title>Page d'Inscription</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/styleConnexion.css">
     <script src="../js/signup.js"></script>
+
+
 </head>
 <body>
-    <h1>Page d'Inscription</h1>
-    <form id="signup-form">
-        <label for="new-username">Nouveau Nom d'Utilisateur:</label>
-        <input type="text" id="new-username" name="new-username" required>
-        <br>
-        <label for="new-password">Nouveau Mot de Passe:</label>
-        <input type="password" id="new-password" name="new-password" required>
-        <br>
-        <button type="submit">S'inscrire</button>
-    </form>
-    <p>Déjà un compte ? <a href="login.html">Se connecter</a></p>
+    <div class="login-container">
+        <h1>Page d'Inscription</h1>
+
+        <form id="signup-form">
+            <label for="new-username">Nouveau Nom d'Utilisateur:</label>
+            <input type="text" id="new-username" name="new-username" required>
+            <br>
+            <label for="new-password">Nouveau Mot de Passe:</label>
+            <div class="password-container">
+                <input type="password" id="password" name="password" required>
+                <span class="toggle-icon" onclick="showPassword()">&#x1F441;</span>
+            </div>            
+            <br>
+            <button id="boutonSign" type="submit">S'inscrire</button>
+
+            <p class="error" class="success"></p>
+        </form>
+
+
+        <p>Déjà un compte ? <a href="login.html">Se connecter</a></p>
+    </div>
 </body>
 </html>

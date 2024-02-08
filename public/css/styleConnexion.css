@@ -1,0 +1,77 @@
+html,body  
+{  
+    overflow:hidden;  
+}
+
+
+body
+{
+	font-family: 'larsseitregular', sans-serif;
+	margin: 0;
+    background-color: #585858;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+
+.login-container {
+	max-width: 300px;
+	margin: 0 auto; /* Centrez le formulaire horizontalement */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	
+}
+
+h1{
+    border:3px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+	width: 90%; /* Le bouton occupera 100% de la largeur du conteneur */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#boutonSign{
+	width: 100px; 
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+.password-container {
+    position: relative;
+    display: flex;
+}
+
+input[type="password"] {
+    width: 90%; /* Utilisez 100% de la largeur disponible dans le conteneur */
+}
+
+
+.toggle-icon {
+	font-size: 20px;
+    position: absolute;
+    right: 15px; 
+    top: 30%;
+    transform: translateY(-50%);
+	cursor: pointer;
+}
