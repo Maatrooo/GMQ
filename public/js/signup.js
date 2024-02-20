@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Réécrivez le fichier user.json avec le nouvel utilisateur
                 return fetch("./../json/user.json", {
-                    method: "PUT",
+                    method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
@@ -41,3 +41,12 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     });
 });
+
+function showPassword() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }

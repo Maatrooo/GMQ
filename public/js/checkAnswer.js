@@ -1,5 +1,6 @@
 var score=0;
-function checkAnswer() {
+function checkAnswer() 
+{
     var correctAnswer= document.getElementById("videoName").innerHTML;
     let userAnswer = document.getElementById("answer-input").value;
     if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {

@@ -3,23 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="../css/style.css"> 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
   <script src="https://cdn.socket.io/4.1.3/socket.io.min.js"></script>
+
   <title>Multiplayer</title>
 </head>
+
 <body>
-  <a class="boutonP" href="../index.html">Accueil</a>
-  <div id="rooms">
-    <h2>Salles disponibles</h2>
-    <ul id="rooms-list">
-      <!-- Les salles seront affichées ici -->
-    </ul>
+
+  <div id="headerPlay">
+    <a class="boutonHome" href="../index.html"><i class="fa fa-home"></i></a>
   </div>
+
   <div id="create-room">
     <h2>Créer une salle</h2>
     <input type="text" id="room-name-input" placeholder="Nom de la salle">
-    <button id="create-room-button">Créer</button>
+    <button id="create-room-button" class="custom-button">Créer</button>
   </div>
+
+  <div id="rooms">
+    <h2>Salles disponibles</h2>
+    <ul id="roomsList">
+      <!-- Les salles seront affichées ici -->
+    </ul>
   </div>
+  
+  
 </body>
 <script src="../js/app.js"></script>
 </html>

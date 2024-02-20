@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.getElementById("login-form");
 
+   
+
     loginForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
@@ -8,7 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const password = document.getElementById("password").value;
 
         // Créez un objet utilisateur
-        const newUser = {
+        const newUser = 
+        {
             username: username,
             password: password
         };
@@ -39,3 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error("Erreur lors du chargement de users.json:", error));
     });
 });
+
+function showPassword() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }

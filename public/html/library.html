@@ -6,13 +6,16 @@
 	<title>GMQ - Library</title>
 	<link rel="icon" type="image/png" href="../image/Logo.png" />
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 	<script src="../js/video-player.js"></script>
 </head>
 
 <body onload="createVideoList()">
 
-    <div class="btnP">
-		<a class="boutonP" href="../index.html">Accueil</a>
+	<div id="headerPlay">
+		<a class="boutonHome" href="../index.html"><i class="fa fa-home"></i></a>
+
 	</div>
 	
 	<select name="genre" id="genre-select" onchange="change_valeurlib();">
