@@ -16,7 +16,7 @@ function chooseRandomVideo() {
     option = change_valeur();
     console.log(option);
     // Filtrer les vidéos non sélectionnées
-    const filteredVideos = videos.filter(video => !video.selected && video.genre === option);
+    const filteredVideos = videos.filter(video => !video.selected &&  video.genre === option);
     
     
     // Vérifier s'il reste des vidéos non sélectionnées

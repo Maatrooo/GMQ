@@ -15,6 +15,50 @@ const port = process.env.PORT || 3000;
 
 app.use(express.static('public'));
 
+app.use(express.json());
+
+// Endpoint pour l'inscription
+app.post('/signup', (req, res) => {
+  const { username, password } = req.body;
+
+  // Charger les utilisateurs depuis le fichier JSON
+  fs.readFile('public/json/user.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error("Erreur de lecture du fichier JSON :", err);
+      return res.status(500).send("Une erreur s'est produite lors de l'inscription.");
+  }
+
+  let users;
+  try {
+      users = JSON.parse(data);
+      if (!Array.isArray(users.users)) {
+          throw new Error("La propriété 'users' n'est pas un tableau.");
+      }
+  } catch (error) {
+      console.error("Erreur lors de l'analyse du fichier JSON :", error);
+      return res.status(500).send("Une erreur s'est produite lors de l'inscription.");
+  }
+
+  // Maintenant, vous pouvez utiliser la méthode find() sur users.users
+  if (users.users.find(user => user.username === username)) {
+      return res.status(400).send("Ce nom d'utilisateur existe déjà !");
+  }
+
+  // Ajouter le nouvel utilisateur
+  users.users.push({ username, password });
+
+  // Enregistrer les utilisateurs mis à jour dans le fichier JSON
+  fs.writeFile('public/json/user.json', JSON.stringify(users), (err) => {
+      if (err) {
+          console.error("Erreur d'écriture du fichier JSON :", err);
+          return res.status(500).send("Une erreur s'est produite lors de l'inscription.");
+      }
+      res.status(201).send("Utilisateur inscrit avec succès !");
+  });
+});
+
+});
+
 const rooms = [];
 
 io.on('connection', (socket) => {
@@ -69,15 +113,18 @@ io.on('connection', (socket) => {
       updateRoomUsers(roomId);
     });
   
-    // Fonction pour mettre à jour les utilisateurs dans la salle
-    function updateRoomUsers(roomId) {
-      const room = io.sockets.adapter.rooms.get(roomId);
-      const usersInRoom = room ? Array.from(room) : [];
-      console.log(`[DEBUG:] Utilisateurs dans la salle ${roomId} :`, usersInRoom);
-  
-      // Émettre un événement aux clients de cette salle pour mettre à jour les utilisateurs
-      io.to(roomId).emit('updateRoomUsers', usersInRoom);
-    }
+  // Fonction pour mettre à jour les utilisateurs dans la salle
+  function updateRoomUsers(roomId) {
+    const room = io.sockets.adapter.rooms.get(roomId);
+    const usersInRoom = room ? Array.from(room) : [];
+    console.log(`[DEBUG:] Utilisateurs dans la salle ${roomId} :`, usersInRoom);
+
+    // Émettre un événement aux clients de cette salle pour mettre à jour les utilisateurs
+    io.to(roomId).emit('updateRoomUsers', usersInRoom);
+
+    // Émettre un événement aux clients de cette salle pour mettre à jour le nombre de joueurs
+    io.to(roomId).emit('updateRoomPlayerCount', room.size);
+  }
 
 
 
@@ -199,3 +246,4 @@ fetch("http://localhost:9821/json/video.json")
     }
   }
   
+

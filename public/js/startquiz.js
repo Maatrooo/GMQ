@@ -49,7 +49,7 @@ function startGame(){
           startGame() // Tu relance un cylce
         }
         else{
-            // ici ecran de fin ou autre si jamais 
+            document.getElementById("gameContainer").style.display = "none"; 
             cache()
             muted()
         }
