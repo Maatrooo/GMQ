@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire d'ajout de vidéo</title>
+</head>
+<body>
+    <h1>Formulaire d'ajout de vidéo</h1>
+    <form method="POST" action="/ajouter-video">
+        <label for="lien_youtube">Lien YouTube :</label><br>
+        <input type="text" id="lien_youtube" name="lien_youtube"><br>
+        
+        <label for="nom">Nom de la vidéo :</label><br>
+        <input type="text" id="nom_video" name="nom"><br>
+        
+        <label for="genre">Genre :</label><br>
+        <input type="text" id="genre_video" name="genre"><br><br>
+        
+        <button type="submit">Ajouter la vidéo</button>
+    </form>
+</body>
+</html>

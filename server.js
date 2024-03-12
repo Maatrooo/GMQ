@@ -3,7 +3,8 @@ const path = require('path');
 const http = require('http');
 const { Server } = require('socket.io');
 const dotenv = require('dotenv');
-const fs = require('fs');
+const { spawn } = require('child_process');
+const bodyParser = require('body-parser');
 
 dotenv.config();
 
@@ -14,14 +15,37 @@ const io = new Server(server);
 const port = process.env.PORT || 3000;
 
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-const rooms = [];
+app.post('/ajouter-video', (req, res) => {
+    // Extraire les données du formulaire
+    const lien_youtube = req.body.lien_youtube;
+    const nom_video = req.body.nom_video;
+    const genre_video = req.body.genre_video;
 
-io.on('connection', (socket) => {
-  console.log(`[connection] ${socket.id}`);
-    // Gestionnaire d'événement lorsque l'utilisateur demande la liste des salles
-    socket.emit('listRooms', rooms);
+    // Exécuter le script Python avec les données du formulaire
+    const pythonProcess = spawn('python', ['public/py/AjoutVideo.py', lien_youtube, nom_video, genre_video]);
+
+    pythonProcess.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`);
+    });
+
+    pythonProcess.stderr.on('data', (data) => {
+        console.error(`stderr: ${data}`);
+    });
+
+    pythonProcess.on('close', (code) => {
+        console.log(`child process exited with code ${code}`);
+        res.send('Vidéo ajoutée avec succès !');
+    });
 });
+
+
+// Route pour la page de confirmation
+app.get('/confirmation', (req, res) => {
+    res.send('La vidéo a été ajoutée avec succès !');
+});
+
 
 const roomCreators = {};
 let roomId;
