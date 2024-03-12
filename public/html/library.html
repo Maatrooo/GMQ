@@ -36,6 +36,25 @@
 	<div id="scrollable-area">
 		<ul id="video-list"></ul>
 	</div>
+
+	<script>
+
+		const images = document.querySelector('.images');
+		images.addEventListener('animationiteration', () => {
+			  const firstImage = images.firstElementChild;
+			  images.removeChild(firstImage);
+			  images.appendChild(firstImage);
+		});
+	</script>
+	
+	<div class="carousel">
+		<div class="categorieGame">
+		  <div class="block jeu-video">Jeux Vidéo</div><div class="block film">Film</div><div class="block annees-80">Années 80</div><div class="block anime">Animé</div><div class="block disney">Disney</div><div class="block dessin-anime">Dessin Animé</div>
+		  <div class="block jeu-video">Jeux Vidéo</div><div class="block film">Film</div><div class="block annees-80">Années 80</div><div class="block anime">Animé</div><div class="block disney">Disney</div><div class="block dessin-anime">Dessin Animé</div>
+		  <div class="block jeu-video">Jeux Vidéo</div><div class="block film">Film</div><div class="block annees-80">Années 80</div><div class="block anime">Animé</div><div class="block disney">Disney</div><div class="block dessin-anime">Dessin Animé</div>
+		  <div class="block jeu-video">Jeux Vidéo</div><div class="block film">Film</div><div class="block annees-80">Années 80</div><div class="block anime">Animé</div><div class="block disney">Disney</div><div class="block dessin-anime">Dessin Animé</div>
+		</div>
+	</div>
  
 </body>
 </html>

@@ -3,7 +3,8 @@ const path = require('path');
 const http = require('http');
 const { Server } = require('socket.io');
 const dotenv = require('dotenv');
-const fs = require('fs');
+const { spawn } = require('child_process');
+const bodyParser = require('body-parser');
 
 dotenv.config();
 
@@ -66,6 +67,7 @@ io.on('connection', (socket) => {
     // Gestionnaire d'événement lorsque l'utilisateur demande la liste des salles
     socket.emit('listRooms', rooms);
 });
+
 
 const roomCreators = {};
 let roomId;
