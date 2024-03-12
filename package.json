@@ -6,6 +6,7 @@
     "fs": "^0.0.1-security",
     "socket.io": "^4.7.2",
     "youtube-dl": "^3.4.1",
-    "youtube-dl-exec": "^2.5.7"
+    "youtube-dl-exec": "^2.5.7",
+    "ytdl-core": "^4.11.5"
   }
 }

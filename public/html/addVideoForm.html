@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Formulaire d'ajout de vidéo</h1>
-    <form method="POST" action="/ajouter-video">
+    <form id="videoForm" enctype="multipart/form-data">
         <label for="lien_youtube">Lien YouTube :</label><br>
         <input type="text" id="lien_youtube" name="lien_youtube"><br>
         
@@ -17,7 +17,29 @@
         <label for="genre">Genre :</label><br>
         <input type="text" id="genre_video" name="genre"><br><br>
         
-        <button type="submit">Ajouter la vidéo</button>
+        <button type="button" onclick="addVideo()">Ajouter la vidéo</button>
     </form>
+
+    <script>
+        function addVideo() {
+            // Récupérer les données du formulaire
+            var formData = new FormData(document.getElementById("videoForm"));
+
+            // Envoyer les données à votre serveur pour traitement
+            fetch('/ajouter-video', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                // Afficher un message de réussite ou d'échec, recharger la page, etc.
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                // Gérer l'erreur, afficher un message à l'utilisateur, etc.
+            });
+        }
+    </script>
 </body>
 </html>

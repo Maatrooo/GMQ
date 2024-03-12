@@ -3,8 +3,8 @@ const path = require('path');
 const http = require('http');
 const { Server } = require('socket.io');
 const dotenv = require('dotenv');
-const { spawn } = require('child_process');
-const bodyParser = require('body-parser');
+const fs = require('fs');
+const ytdl = require('ytdl-core');
 
 dotenv.config();
 
@@ -15,50 +15,6 @@ const io = new Server(server);
 const port = process.env.PORT || 3000;
 
 app.use(express.static('public'));
-
-app.use(express.json());
-
-// Endpoint pour l'inscription
-app.post('/signup', (req, res) => {
-  const { username, password } = req.body;
-
-  // Charger les utilisateurs depuis le fichier JSON
-  fs.readFile('public/json/user.json', 'utf8', (err, data) => {
-    if (err) {
-      console.error("Erreur de lecture du fichier JSON :", err);
-      return res.status(500).send("Une erreur s'est produite lors de l'inscription.");
-  }
-
-  let users;
-  try {
-      users = JSON.parse(data);
-      if (!Array.isArray(users.users)) {
-          throw new Error("La propriété 'users' n'est pas un tableau.");
-      }
-  } catch (error) {
-      console.error("Erreur lors de l'analyse du fichier JSON :", error);
-      return res.status(500).send("Une erreur s'est produite lors de l'inscription.");
-  }
-
-  // Maintenant, vous pouvez utiliser la méthode find() sur users.users
-  if (users.users.find(user => user.username === username)) {
-      return res.status(400).send("Ce nom d'utilisateur existe déjà !");
-  }
-
-  // Ajouter le nouvel utilisateur
-  users.users.push({ username, password });
-
-  // Enregistrer les utilisateurs mis à jour dans le fichier JSON
-  fs.writeFile('public/json/user.json', JSON.stringify(users), (err) => {
-      if (err) {
-          console.error("Erreur d'écriture du fichier JSON :", err);
-          return res.status(500).send("Une erreur s'est produite lors de l'inscription.");
-      }
-      res.status(201).send("Utilisateur inscrit avec succès !");
-  });
-});
-
-});
 
 const rooms = [];
 
@@ -249,3 +205,53 @@ fetch("http://localhost:9821/json/video.json")
   }
   
 
+// Middleware pour analyser les données POST
+app.use(express.urlencoded({ extended: true }));
+
+app.post('/ajouter-video', async (req, res) => {
+    const { lien_youtube, nom, genre } = req.body;
+
+    // Télécharger la vidéo
+    const videoInfo = await ytdl.getInfo(lien_youtube);
+    const videoTitle = videoInfo.videoDetails.title;
+    const videoStream = ytdl(lien_youtube, { quality: 'highest' });
+
+    videoStream.pipe(fs.createWriteStream(`./public/Video/${videoTitle}.mp4`));
+
+    // Enregistrer les informations dans un fichier JSON
+    const videoData = {
+      name: nom,
+      path: `../Video/${videoTitle}.mp4`,
+      genre: genre,
+      selected: false // Supposons que vous avez déjà la valeur de selected
+    };
+
+    // Chemin vers le fichier JSON
+    const jsonFilePath = './public/json/video.json';
+
+    // Lire le contenu du fichier JSON
+    fs.readFile(jsonFilePath, 'utf8', (err, data) => {
+      if (err) {
+          console.error('Erreur lors de la lecture du fichier JSON :', err);
+          return;
+      }
+
+      let jsonData = JSON.parse(data);
+      let videos = jsonData.videos;
+
+      // Ajouter les nouvelles données à l'objet
+      videos.push(videoData);
+
+      // Convertir le tableau JavaScript en format JSON
+      jsonData = JSON.stringify(jsonData, null, 2);
+
+      // Écrire le contenu JSON dans le fichier
+      fs.writeFile(jsonFilePath, jsonData, (err) => {
+          if (err) {
+              console.error('Erreur lors de l\'écriture du fichier JSON :', err);
+              return;
+          }
+          console.log('Données enregistrées dans le fichier JSON avec succès.');
+      });
+    });
+});

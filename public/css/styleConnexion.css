@@ -16,12 +16,15 @@ body
 
 
 .login-container {
-	max-width: 300px;
-	margin: 0 auto; /* Centrez le formulaire horizontalement */
+    max-width: 300px;
+    margin: auto; /* Centrez le formulaire horizontalement et verticalement */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-	
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 h1{
@@ -75,3 +78,48 @@ input[type="password"] {
     transform: translateY(-50%);
 	cursor: pointer;
 }
+
+
+.headerPlay{
+
+	display: flex;
+	align-items:start;
+	margin-bottom: 2%;
+  background-size: initial;
+  }
+
+  .bande {
+    display: flex;
+    align-items: center;   
+}
+
+
+.boutonHome {
+	
+	background-color: white;
+	color: #3b3b3b;
+	text-align: center;
+	text-decoration: none;
+	padding: 1% 2% 1% 2%;
+	font-size: 2.5rem;
+	border-radius: 1rem;
+	border-bottom: 7px solid #000;
+  margin: 15%;
+	margin-left: 12px;
+	transition: transform 0.0s ease-in-out;
+}
+    
+    .boutonHome:hover {
+      background-color: #818181;
+      color: white;
+      transform: scale(1.1);
+      
+    }
+    
+    .boutonHome:active {
+      border-bottom: 3px solid #000;
+    }
+
+    .boutonHome i {
+        transform: scale(0.7); /* Ajustez la valeur selon vos besoins (0.8 pour 80% de la taille d'origine) */
+    }
