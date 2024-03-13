@@ -364,17 +364,28 @@ main{
 
 /********************Multi***********/
 
+#h2rooms	{
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	flex-direction: column;
+	margin-top: 5%;
+}
+
 #rooms {
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	text-align: center;
 	flex-direction: column;
 	margin-top: 5%;
-	
+	margin-left: 3%;
+	margin-right:3%
 }
 
 #roomsList {
+	display: flex;
     list-style: none;
+	flex-direction: row;
     padding: 0;
 	width: 10%;
 	
@@ -383,8 +394,8 @@ main{
   #roomsList li {
 	display: flex;
     flex-direction: column;
+	margin-right: 3rem;
     margin-bottom: 10px;
-	
   }
   
   #roomsList button {
