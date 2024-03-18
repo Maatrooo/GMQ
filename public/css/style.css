@@ -535,6 +535,81 @@ main{
 }
 
 
+
+
+/********************Multi***********/
+
+#h2rooms	{
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	flex-direction: column;
+	margin-top: 5%;
+}
+
+#rooms {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	flex-direction: column;
+	margin-top: 5%;
+	margin-left: 3%;
+	margin-right:3%
+}
+
+#roomsList {
+	display: flex;
+    list-style: none;
+	flex-direction: row;
+    padding: 0;
+	width: 10%;
+	
+}
+  
+  #roomsList li {
+	display: flex;
+    flex-direction: column;
+	margin-right: 3rem;
+    margin-bottom: 10px;
+  }
+  
+  #roomsList button {
+	font-weight: bold;
+	font-size: 1.25em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    border: 4px dashed rgba(0, 0, 0, 0.20);
+    background: white;
+    text-decoration: none;
+    color: #3c3733;
+    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.05), 0 0.2em 0.5em rgba(0, 0, 0, 0.05);
+    transform: rotate(-6deg);
+    padding: 10px;
+}
+
+#roomsList button:hover {
+    background-color: #818181;
+	color:white;
+	cursor: pointer;
+	transform: scale(1.2) rotate(5deg);
+}
+
+.roomInfo {
+    flex: 1;
+    padding: 0.5em;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.05);
+    margin: 0.3em;
+    border-radius: 0.25em;
+    border-right: none;
+}
+
+  
+
+
+
 #volume{
 	position: absolute;
 	right: 20px;
