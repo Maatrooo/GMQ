@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  	<meta charset="UTF-8">
+  	<link rel="stylesheet" type="text/css" href="../css/style.css"> 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  	<script src="https://cdn.socket.io/4.1.3/socket.io.min.js"></script>
+  	<script src="/socket.io/socket.io.js"></script>
+	<script src="../js/timer.js"></script>
+	<script src="../js/startquiz.js"></script>
+	<script src="../js/video-player.js"></script>
+	<script src="../js/checkAnswer.js"></script>
+	<script src="../js/startquizmulti.js"></script>
+	<title>Multiplayer</title>    
+</head>
+
+<body>
+	<div id="headerPlay">
+		<a class="boutonHome" href="../html/multiplayer.html"><i class="fa fa-long-arrow-alt-left"></i></a>
+	</div>
+
+
+	<div id="option">
+		<h1>Parametre de la partie</h1>
+		<select name="genre" id="genre-select" onchange="change_valeur();">
+			<option value="">Toute Catégorie</option>
+			<option value="Game">Jeux Video</option>
+			<option value="Film">Film</option>
+			<option value="80">Années 80</option>
+			<option value="AJap">Animé</option>
+			<option value="Disney">Disney</option>
+			<option value="DessinA">Dessin Animé</option>
+		</select>
+
+		<button id="startBtn" onclick="console.log('Room ID:', roomId); socket.emit('requestStartGame', { roomId });">Start</button>
+
+	</div>
+
+
+
+	
+	<div id="gameContainer" style="display: none;">	 
+
+		<p id="manche-display"><span id="manchevalue"></span> / <span id="maxmanchevalue"></span> </p>
+	
+	
+		<div class="FormatTextP">
+			<div class="timerP" id="timer-display"></div>
+	
+			<div><p id="videoName"></p></div>
+		</div>
+	
+		<div id="videoPlayer">
+			<p id="score-display">Score : <span id="scorevalue">0</span></p>
+	
+			<video id="videoSource" style="visibility: hidden;" preload="none" disablepictureinpicture>
+				<source id="videoSource" type="video/mp4">
+			</video>
+		</div>
+		<div>
+			<input type="range" id="volume" min="0" max="100" value="50" step="1">
+			<script>
+				document.addEventListener("DOMContentLoaded", function () {
+					var video = document.getElementById("videoSource");
+					var volume = document.getElementById("volume");
+		
+					function setVolume() {
+						video.volume = volume.value / 100;
+					}
+		
+					volume.addEventListener("input", setVolume);
+				});
+			</script>
+		</div>
+		
+	
+	
+		<div id="answer-form">
+			<input class="Reponse1" type="text" id="answer-input" name="answer" onkeyup="searchVideos()"></input>
+			
+		</div>
+		
+		<ul id="searchresults"></ul>
+	
+	
+	</div>
+</body>
+</html>

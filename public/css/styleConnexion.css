@@ -1,0 +1,125 @@
+html,body  
+{  
+    overflow:hidden;  
+}
+
+
+body
+{
+	font-family: 'larsseitregular', sans-serif;
+	margin: 0;
+    background-color: #585858;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+
+.login-container {
+    max-width: 300px;
+    margin: auto; /* Centrez le formulaire horizontalement et verticalement */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h1{
+    border:3px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+	width: 90%; /* Le bouton occupera 100% de la largeur du conteneur */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#boutonSign{
+	width: 100px; 
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+.password-container {
+    position: relative;
+    display: flex;
+}
+
+input[type="password"] {
+    width: 90%; /* Utilisez 100% de la largeur disponible dans le conteneur */
+}
+
+
+.toggle-icon {
+	font-size: 20px;
+    position: absolute;
+    right: 15px; 
+    top: 30%;
+    transform: translateY(-50%);
+	cursor: pointer;
+}
+
+
+.headerPlay{
+
+	display: flex;
+	align-items:start;
+	margin-bottom: 2%;
+  background-size: initial;
+  }
+
+  .bande {
+    display: flex;
+    align-items: center;   
+}
+
+
+.boutonHome {
+	
+	background-color: white;
+	color: #3b3b3b;
+	text-align: center;
+	text-decoration: none;
+	padding: 1% 2% 1% 2%;
+	font-size: 2.5rem;
+	border-radius: 1rem;
+	border-bottom: 7px solid #000;
+  margin: 15%;
+	margin-left: 12px;
+	transition: transform 0.0s ease-in-out;
+}
+    
+    .boutonHome:hover {
+      background-color: #818181;
+      color: white;
+      transform: scale(1.1);
+      
+    }
+    
+    .boutonHome:active {
+      border-bottom: 3px solid #000;
+    }
+
+    .boutonHome i {
+        transform: scale(0.7); /* Ajustez la valeur selon vos besoins (0.8 pour 80% de la taille d'origine) */
+    }

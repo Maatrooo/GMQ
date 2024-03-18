@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../css/style.css"> 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <script src="https://cdn.socket.io/4.1.3/socket.io.min.js"></script>
+
+  <title>Multiplayer</title>
+</head>
+
+<body>
+
+  <div id="headerPlay">
+    <a class="boutonHome" href="../index.html"><i class="fa fa-home"></i></a>
+  </div>
+
+  <div id="create-room">
+    <h2>Créer une salle</h2>
+    <input type="text" id="room-name-input" placeholder="Nom de la salle">
+
+    
+
+    <input type="checkbox" id="privacyRoom" value="private">
+    <label for="privacyRoom" data-title-text="privacyRoom.title">🔒
+      <span data-text="privacyRoom"></span>
+    </label>
+
+
+    <br>
+    <div id="password-input-container" style="display: none;">
+      <input type="password" id="password-input" placeholder="Mot de passe">
+    </div>  
+  </div>
+  <button id="create-room-button" class="custom-button">Créer</button>
+
+  </div>
+  <br>
+
+
+  <div id="h2rooms">
+    <h2>Salles disponibles</h2>
+  </div>
+  <div id="rooms">
+    <ul id="roomsList">
+      <!-- Les salles seront affichées ici -->
+    </ul>
+  </div>
+  
+  
+</body>
+<script src="../js/app.js"></script>
+</html>

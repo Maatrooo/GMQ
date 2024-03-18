@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>GMQ - Play</title>
+		<link rel="icon" type="image/png" href="../image/Logo.png" />
+		<link rel="stylesheet" type="text/css" href="../css/styleSolo.css">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel&family=Roboto+Slab&family=Roboto:wght@400;700&family=Press+Start+2P&family=Manga+Temple&family=Japanese+Brush&family=Waltograph&family=Disney+Print&family=Comic+Sans+MS&family=Chalkboard&family=Old+Standard+TT&family=Bangers&family=Kanji&family=Chicle&family=Orbitron&family=Caveat&family=Amatic+SC&display=swap">
+			
+		
+		  
+		  
+
+		<script src="../js/timer.js"></script>
+		<script src="../js/startquiz.js"></script>
+		<script src="../js/video-player.js"></script>
+		<script src="../js/checkAnswer.js"></script>
+		<script src="../js/volume.js"></script>
+	</head>
+	
+	<body onload="chooseRandomVideo();", onload="setTimeout();", onload = "startQuiz();", onload = "afficheS();", onload="startTimer();", onload="mu();">
+
+		<div class="headerPlay">
+			<div class="bande">
+				<a class="boutonHome" href="../index.html"><i class="fas fa-home"></i></a>	
+			</div>
+		</div>
+		
+		<div id="parametreGame">
+			<h1>Parametre de la partie</h1>
+			<div id="selectGenre">
+				<select name="genre" id="genre-select" onchange="change_valeur();">
+					<option value="">Toute Catégorie</option>
+					<option value="Game">Jeux Video</option>
+					<option value="Film">Film</option>
+					<option value="80">Années 80</option>
+					<option value="AJap">Animé</option>
+					<option value="Disney">Disney</option>
+					<option value="DessinA">Dessin Animé</option>
+				</select>
+		
+			</div>
+
+			
+			<button id="startBtn" onclick="startGame();"><i class="fas fa-caret-right"></i> Start <i class="fas fa-caret-left"></i></button>
+			
+		</div>
+
+	<div id="gameContainer" style="display: none;">	 
+
+		<div id="volume-container">
+			<button id="muteButton" class="fas fa-volume-up"></button>
+			<input type="range" id="volume" min="0" max="100" value="0" step="1">
+		</div>
+	
+		<div class="round">
+			<div class="mancheEtScore">
+				<p id="manche-display"><span id="manchevalue"></span> / <span id="maxmanchevalue"></span> </p>
+				<p id="score-display">Score: <span id="scorevalue">0</span></p>
+			</div>
+		
+			<div class="FormatTextP">
+				<div class="timerP" id="timer-display"></div>
+		
+				<div><p id="videoName"></p></div>
+			</div>
+		
+			<div id="videoPlayer">		
+				<video id="videoSource" style="visibility: hidden;" disablepictureinpicture>
+					<source id="videoSource" type="video/mp4">
+				</video>
+			</div>
+		</div>
+	
+		<div id="answer-form">
+			<input class="Reponse1" type="text" id="answer-input" name="answer" onkeyup="searchVideos()"></input>
+		</div>
+
+		<div class="sidebarScore">
+			
+		</div>
+		
+		<ul id="searchresults"></ul>
+	
+	
+	</div>
+
+
+	
+	</body>
+	
+	
+	</html>
