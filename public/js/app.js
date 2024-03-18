@@ -23,13 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hasPassword = document.querySelector('#privacyRoom').checked;
     console.log(hasPassword);
     let password = ''; // Initialisation du mot de passe
-  
-    // Si le mot de passe est activé, récupération de sa valeur
-
-    const hasPassword = document.querySelector('#password-checkbox').checked;
-    console.log(hasPassword);
-    let password = '';
-  
+    
 
     if (hasPassword) {
       const passwordInput = document.querySelector('#password-input');
