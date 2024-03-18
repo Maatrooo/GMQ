@@ -48,13 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Définition de la variable isRoomCreator à true pour indiquer que l'utilisateur est le créateur de la salle
         isRoomCreator = true;
       });
-      // Effacement de la valeur du champ du nom de la salle après la création de la salle
-
-      socket.emit('createRoom', roomName, hasPassword, password, (roomId) => {
-        window.location.href = `/room/${roomId}`;
-        isRoomCreator = true;
-      });
-
       roomNameInput.value = '';
     } else {
       // Affichage d'une alerte si le nom de la salle est vide
@@ -62,15 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 }
-
-
-
-
-
-  }
-  
-
-
 
   function joinRoom(roomId) {
     console.log(roomId);
@@ -92,8 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
       socket.on('roomNotFound', () => {
 
         alert("La salle n'existe pas. Veuillez réessayer.");
-
-        alert("La salle n'existe pas . Veuillez réessayer.");
 
       });
     
