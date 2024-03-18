@@ -25,7 +25,7 @@
             // Récupérer les données du formulaire
             var formData = new FormData(document.getElementById("videoForm"));
 
-            // Envoyer les données à votre serveur pour traitement
+            // Envoyer les données au serveur pour traitement
             fetch('/ajouter-video', {
                 method: 'POST',
                 body: formData

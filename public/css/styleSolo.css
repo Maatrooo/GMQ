@@ -6,7 +6,7 @@ html,body
 
 body
 {
-	  font-family: 'larsseitregular', sans-serif;
+    font-family: 'larsseitregular', sans-serif;
 	  margin: 0;
     background-color: #585858;
     background-size: cover;
@@ -60,6 +60,30 @@ body
     }
     
 
+
+select {
+   -webkit-appearance:none;
+   -moz-appearance:none;
+   -ms-appearance:none;
+   appearance:none;
+   outline:0;
+   box-shadow:none;
+   border:0!important;
+   background: #5c6664;
+   background-image: none;
+   flex: 1;
+   padding: 0 .5em;
+   color:#fff;
+   cursor:pointer;
+   font-size: 1.3em;
+   font-family: 'Open Sans', sans-serif;
+   text-align: center;
+
+}
+select::-ms-expand {
+   display: none;
+}
+
 #parametreGame{
   display: flex;
 	justify-content: center;
@@ -67,7 +91,42 @@ body
 	flex-direction: column;
 	margin-top: 2%;
 	margin-bottom: 2%;
+  color: white;
 }
+
+#selectGenre {
+   position: relative;
+   display: flex;
+   width: 17em;
+   height: 3em;
+   line-height: 3;
+   background: #5c6664;
+   overflow: hidden;
+   border-radius: .25em;
+}
+#selectGenre::after {
+   content: '\25BC';
+   position: absolute;
+   top: 0;
+   right: 0;
+   padding: 0 1em;
+   background: #3b3b3b;
+   cursor:pointer;
+   pointer-events:none;
+   transition:.25s all ease;
+}
+#selectGenre:hover::after {
+   color: #23b499;
+}
+
+#genre-select::after {
+  content: "&nbsp;";
+  display: block;
+  cursor: pointer;
+}
+
+
+
 
 
 #startBtn {
@@ -94,6 +153,8 @@ body
 #startBtn:active {
 border-bottom: 3px solid #000;
 }
+
+
 
 
 
@@ -149,21 +210,44 @@ border-bottom: 3px solid #000;
 }
 
 
+.FormatTextP{
+  height: 10%;
+
+}
+
+.timerP{
+  color: aliceblue;
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: -15px;
+  position: sticky;
+  text-align: center;
+  text-decoration: none;
+  z-index: 1;
+  font-size: 35px;
+
+}
+
+
   #videoSource {
-    block-size: 300px;
+
     display: block;
-    margin-top: 1%;
+    block-size: 200px;
+   
     margin-left:auto;
     margin-right:auto;
     border : 7px solid #818181;
-    height: auto;
-    width: 23%;
-  
+    width: 100%; /* La vidéo occupe toute la largeur disponible */
+    height: 100%; /* Hauteur automatique pour conserver le ratio d'aspect */
+    object-fit: cover; /* Redimensionner la vidéo pour couvrir le conteneur tout en préservant son aspect */
+
   }
   
-  #videoPlayer{
-    height: 45%;
-    width: auto;
+  #videoPlayer {
+    width: 400px; /* Largeur fixe */
+    height: 300px; /* Hauteur fixe */
+    overflow: hidden; /* Masquer tout contenu dépassant de la taille définie */
   }
   
   
@@ -173,34 +257,15 @@ border-bottom: 3px solid #000;
     color: aliceblue;
     margin-left:auto;
     margin-right:auto;
+    margin-top: -15px;
     position: sticky;
     text-align: center;
     text-decoration: none;
     z-index: 1;
-    font-size: 35px;
-    margin-top: 0;
-    margin-bottom: 0;
+    font-size: 30px;
+    margin-bottom: 10px;
   }
   
-  
-  .timerP{
-    color: aliceblue;
-    display: block;
-    margin-left:auto;
-    margin-right:auto;
-    position: sticky;
-    text-align: center;
-    text-decoration: none;
-    z-index: 1;
-    font-size: 35px;
-  
-  }
-  
-
-  .FormatTextP{
-    height: 10%;
-  
-  }
   
   .Reponse1{
     display: block;
@@ -252,8 +317,6 @@ border-bottom: 3px solid #000;
 
   
   
-  
-  
   #searchresults{
     display: none;
     text-align: center;
@@ -261,12 +324,13 @@ border-bottom: 3px solid #000;
     border: 2px solid #3b3b3b;
     border-radius: 10px;
     font-size: 20px;
-    margin-right: 40%;
-    margin-left: 40%;
+    margin-left: 35%;
+    margin-right: 35%;
     padding: 0%;
     overflow-y: scroll;
-    max-height: 200px; 
+    max-height: 120px; 
     cursor: pointer;
     
   }
-  
+
+    

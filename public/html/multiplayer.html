@@ -19,18 +19,26 @@
   <div id="create-room">
     <h2>Créer une salle</h2>
     <input type="text" id="room-name-input" placeholder="Nom de la salle">
-    <button id="create-room-button" class="custom-button">Créer</button>
-  </div>
-    <input type="checkbox" id="password-checkbox">
-  <label for="password-checkbox">Activer mot de passe</label>
-  <br>
-  <div id="password-input-container" style="display: none;">
-    <input type="password" id="password-input" placeholder="Mot de passe">
-  </div>
+    
+
+    <input type="checkbox" id="privacyRoom" value="private">
+    <label for="privacyRoom" data-title-text="privacyRoom.title">🔒
+      <span data-text="privacyRoom"></span>
+    </label>
 
 
-  <div id="rooms">
+    <br>
+    <div id="password-input-container" style="display: none;">
+      <input type="password" id="password-input" placeholder="Mot de passe">
+    </div>  
+  </div>
+  <button id="create-room-button" class="custom-button">Créer</button>
+    
+  
+  <div id="h2rooms">
     <h2>Salles disponibles</h2>
+  </div>
+  <div id="rooms">
     <ul id="roomsList">
       <!-- Les salles seront affichées ici -->
     </ul>

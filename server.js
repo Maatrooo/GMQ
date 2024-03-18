@@ -31,9 +31,16 @@ let roomId;
 io.on('connection', (socket) => {
 
   // Événement de création de salle
-  socket.on('createRoom', (roomName, callback) => {
+  socket.on('createRoom', (roomName, hasPassword, password, callback) => {
     const roomId = generateRoomId();
     const room = { id: roomId, name: roomName, players: [] };
+    room.hasPassword = hasPassword;
+    
+    // Si la salle doit avoir un mot de passe, enregistrez-le avec la salle
+    if (hasPassword) {
+      room.password = password;
+    }
+
     rooms.push(room);
 
     // Associez le créateur de la salle (socket.id) à la salle qu'il a créée
@@ -43,13 +50,42 @@ io.on('connection', (socket) => {
     callback(roomId);
 
     io.emit('listRooms', rooms);
-    
+  });
+
+    // Gérer la connexion d'un socket à une salle
+    socket.on('connexion', ({ roomId, password }) => {
+      const room = rooms.find(room => room.id === roomId);
+      if (room) { 
+        if (room.password && room.password !== password) {
+          // Le mot de passe est incorrect
+          socket.emit('incorrectPassword');
+        } else {
+          socket.join(roomId);
+          socket.emit('goodPassword');
+        }
+      } else {
+        socket.emit('roomNotFound');
+      }
+    });
+
+  socket.on('hasPassword',({ roomId }) => {
+    const room = rooms.find(room => room.id === roomId);
+    if(room.hasPassword == true){
+      socket.emit("passwordTrue");
+    }
+    else{
+      socket.emit("passwordFalse");
+    }
+  });
+
+  socket.on('UpdatePlayerRoom',({ roomId }) => {
+    updateRoomUsers(roomId);
   });
 
   // Liste des salles
   socket.on('getRooms', () => {
     socket.emit('listRooms', rooms);
-  });
+});
 
     // Gérer la connexion d'un socket à une salle
     socket.on('joinRoom', (roomId) => {
@@ -59,7 +95,7 @@ io.on('connection', (socket) => {
   
       // Envoyer un événement pour informer les clients de la mise à jour des utilisateurs dans la salle
       updateRoomUsers(roomId);
-    });
+  });
   
     // Gérer le départ d'un socket d'une salle
     socket.on('leaveRoom', (roomId) => {
@@ -81,7 +117,7 @@ io.on('connection', (socket) => {
     io.to(roomId).emit('updateRoomUsers', usersInRoom);
 
     // Émettre un événement aux clients de cette salle pour mettre à jour le nombre de joueurs
-    io.to(roomId).emit('updateRoomPlayerCount', room.size);
+    //io.to(roomId).emit('updateRoomPlayerCount',  room.size);
   }
 
 
@@ -223,7 +259,7 @@ app.post('/ajouter-video', async (req, res) => {
       name: nom,
       path: `../Video/${videoTitle}.mp4`,
       genre: genre,
-      selected: false // Supposons que vous avez déjà la valeur de selected
+      selected: false
     };
 
     // Chemin vers le fichier JSON
