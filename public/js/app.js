@@ -7,8 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const passwordCheckbox = document.querySelector('#privacyRoom');
 
-  const passwordCheckbox = document.querySelector('#password-checkbox');
-
   passwordCheckbox.addEventListener('change', () => {
     const passwordInputContainer = document.querySelector('#password-input-container');
     passwordInputContainer.style.display = passwordCheckbox.checked ? 'block' : 'none';
