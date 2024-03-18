@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hasPassword = document.querySelector('#privacyRoom').checked;
     console.log(hasPassword);
     let password = ''; // Initialisation du mot de passe
-    
+  
 
     if (hasPassword) {
       const passwordInput = document.querySelector('#password-input');
@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Définition de la variable isRoomCreator à true pour indiquer que l'utilisateur est le créateur de la salle
         isRoomCreator = true;
       });
+
       roomNameInput.value = '';
     } else {
       // Affichage d'une alerte si le nom de la salle est vide
@@ -47,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 }
+
 
   function joinRoom(roomId) {
     console.log(roomId);
@@ -68,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
       socket.on('roomNotFound', () => {
 
         alert("La salle n'existe pas. Veuillez réessayer.");
+
 
       });
     
