@@ -25,18 +25,17 @@
 
 	<div id="parametreGame">
 		<h1>Parametre de la partie</h1>
-		<div id="selectGenre">
-			<select name="genre" id="genre-select" onchange="change_valeur();">
-				<option value="">Toute Catégorie</option>
-				<option value="Game">Jeux Video</option>
-				<option value="Film">Film</option>
-				<option value="80">Années 80</option>
-				<option value="AJap">Animé</option>
-				<option value="Disney">Disney</option>
-				<option value="DessinA">Dessin Animé</option>
-			</select>
-	
-		</div>
+		<select name="genre" id="genre-select" onchange="change_valeur();">
+			<option value="">Toute Catégorie</option>
+			<option value="Game">Jeux Video</option>
+			<option value="Film">Film</option>
+			<option value="80">Années 80</option>
+			<option value="AJap">Animé</option>
+			<option value="Disney">Disney</option>
+			<option value="DessinA">Dessin Animé</option>
+		</select>
+
+		<button id="startBtn" onclick="console.log('Room ID:', roomId); socket.emit('requestStartGame', { roomId }); socket.emit('SuppAffichage', { roomId });">Start</button>
 
 		<button id="startBtn" onclick="console.log('Room ID:', roomId); socket.emit('requestStartGame', { roomId });"><i class="fas fa-caret-right"></i> Start <i class="fas fa-caret-left"></i></button>
 	</div>
