@@ -243,3 +243,51 @@ fetch("http://localhost:9821/json/video.json")
 
 // Middleware pour analyser les données POST
 app.use(express.urlencoded({ extended: true }));
+
+app.post('/ajouter-video', async (req, res) => {
+    const { lien_youtube, nom, genre } = req.body;
+
+    // Télécharger la vidéo
+    const videoInfo = await ytdl.getInfo(lien_youtube);
+    const videoTitle = videoInfo.videoDetails.title;
+    const videoStream = ytdl(lien_youtube, { quality: 'highest' });
+
+    videoStream.pipe(fs.createWriteStream(`./public/Video/${videoTitle}.mp4`));
+
+    // Enregistrer les informations dans un fichier JSON
+    const videoData = {
+      name: nom,
+      path: `../Video/${videoTitle}.mp4`,
+      genre: genre,
+      selected: false
+    };
+
+    // Chemin vers le fichier JSON
+    const jsonFilePath = './public/json/video.json';
+
+    // Lire le contenu du fichier JSON
+    fs.readFile(jsonFilePath, 'utf8', (err, data) => {
+      if (err) {
+          console.error('Erreur lors de la lecture du fichier JSON :', err);
+          return;
+      }
+
+      let jsonData = JSON.parse(data);
+      let videos = jsonData.videos;
+
+      // Ajouter les nouvelles données à l'objet
+      videos.push(videoData);
+
+      // Convertir le tableau JavaScript en format JSON
+      jsonData = JSON.stringify(jsonData, null, 2);
+
+      // Écrire le contenu JSON dans le fichier
+      fs.writeFile(jsonFilePath, jsonData, (err) => {
+          if (err) {
+              console.error('Erreur lors de l\'écriture du fichier JSON :', err);
+              return;
+          }
+          console.log('Données enregistrées dans le fichier JSON avec succès.');
+      });
+    });
+});
