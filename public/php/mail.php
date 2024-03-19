@@ -1,8 +1,8 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lien_youtube = $_POST["lien_youtube"];
-    $nom_video = $_POST["nom_video"];
-    $genre_video = $_POST["genre_video"];
+    $nom_video = $_POST["nom"];
+    $genre_video = $_POST["genre"];
 
     // Adresse e-mail où vous voulez recevoir les messages
     $to = "support@gmq.lol";
