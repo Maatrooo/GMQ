@@ -125,11 +125,9 @@ io.on('connection', (socket) => {
   // Événement pour démarrer la partie en multijoueur à la demande de la page
   socket.on('requestStartGame', ({ roomId, socketId }) => {
     console.log(`[DEBUG:] Événement 'requestStartGame' reçu pour la salle ${roomId}`);
-
+    
     // Rejoignez la salle avant d'émettre l'événement
     socket.join(roomId);
-    // Vous pouvez gérer le démarrage du jeu ici
-    // Assurez-vous que les actions nécessaires pour synchroniser le jeu sont effectuées
 
     // Affichez un message côté serveur indiquant quelle page a fait la demande
     console.log(`[DEBUG:] Socket connecté à la salle ${roomId} :`, socketId);
@@ -144,7 +142,6 @@ io.on('connection', (socket) => {
     // Affiche des informations de débogage
     console.log(`[DEBUG:] Utilisateur ${socket.id} connecté à la salle ${roomId} :`, connectedToRoom);
     console.log(`[DEBUG:] Salle complète :`, io.sockets.adapter.rooms);
-
 
     // Par exemple, émettre un événement à tous les clients pour signaler le démarrage du jeu
     console.log(`[IMPORTANT:] La salle ${roomId} a demandé le démarrage du jeu.`);
@@ -176,8 +173,19 @@ io.on('connection', (socket) => {
     socket.on('ChooseVideo', ({ roomId, selectedValue }) => {
       chooseRandomVideoMulti(roomId, selectedValue);
     });
-  
+    
+    // Écoutez l'événement 'SuppAffichage' pour supprimer la salle de la liste
+    socket.on('SuppAffichage', ({ roomId }) => {
+      // Supprimer la salle correspondante de la liste des salles sur le serveur
+      const index = rooms.findIndex(room => room.id === roomId);
+      if (index !== -1) {
+        rooms.splice(index, 1);
+        // Diffuser la mise à jour de la liste des salles à tous les clients
+        io.emit('listRooms', rooms);
+      }
+    });
 });
+
 
 function generateRoomId() {
   return Math.random().toString(36).substring(2, 9);

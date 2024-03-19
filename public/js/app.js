@@ -85,32 +85,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   
-  // Écoutez l'événement "listRooms" pour afficher la liste des salles
-  socket.on('listRooms', (rooms) => {
-    const roomsList = document.querySelector('#roomsList');
-    roomsList.innerHTML = ''; // Effacez la liste actuelle des salles
-  
-    rooms.forEach((room) => {
-      const listItem = document.createElement('li');
-      const button = document.createElement('button');
-      if(room.hasPassword == false){
-        button.innerHTML = room.name +"<i class='fa fa-unlock'></i>";
-        button.addEventListener('click', () => {
-          connexion(room.id);
-        });
-        listItem.appendChild(button);
-        roomsList.appendChild(listItem);
-      }
-      else{
-        button.innerHTML = room.name +"<i class='fa fa-lock'></i>";
-        button.addEventListener('click', () => {
-          connexion(room.id);
-        });
-        listItem.appendChild(button);
-        roomsList.appendChild(listItem);
-      }    
-    });
+// Écoutez l'événement "listRooms" pour afficher la liste des salles
+socket.on('listRooms', (rooms) => {
+  const roomsList = document.querySelector('#roomsList');
+  roomsList.innerHTML = ''; // Effacez la liste actuelle des salles
+
+  rooms.forEach((room) => {
+    const listItem = document.createElement('li');
+    listItem.setAttribute('id', room.id);
+    const button = document.createElement('button');
+    if (room.hasPassword == false) {
+      button.innerHTML = room.name + "<i class='fa fa-unlock'></i>";
+      button.addEventListener('click', () => {
+        connexion(room.id);
+      });
+      listItem.appendChild(button);
+      roomsList.appendChild(listItem);
+    } else {
+      button.innerHTML = room.name + "<i class='fa fa-lock'></i>";
+      button.addEventListener('click', () => {
+        connexion(room.id);
+      });
+      listItem.appendChild(button);
+      roomsList.appendChild(listItem);
+    }
   });
+});
+
+
   
   
 

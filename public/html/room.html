@@ -33,7 +33,7 @@
 			<option value="DessinA">Dessin Animé</option>
 		</select>
 
-		<button id="startBtn" onclick="console.log('Room ID:', roomId); socket.emit('requestStartGame', { roomId });">Start</button>
+		<button id="startBtn" onclick="console.log('Room ID:', roomId); socket.emit('requestStartGame', { roomId }); socket.emit('SuppAffichage', { roomId });">Start</button>
 
 	</div>
 
