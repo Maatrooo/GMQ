@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Adresse e-mail où vous voulez recevoir les messages
     $to = "support@gmq.lol";
     $subject = "Nouvelle demande d'ajout de vidéo";
-    $body = "Lien youtube: $lien_youtube\n nom de la video: $nom_video\ genre de la video: $genre_video";
+    $body = "Lien youtube: $lien_youtube\n nom de la video: $nom_video\n genre de la video: $genre_video";
 
     // Envoi de l'e-mail
     mail($to, $subject, $body);
