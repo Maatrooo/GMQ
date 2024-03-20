@@ -91,24 +91,28 @@ main{
 	text-align: center;
 	text-decoration: none;
 	padding: 1% 2% 1% 2%;
-	font-size: 2rem;
+	font-size: 2.5rem;
 	border-radius: 1rem;
 	border-bottom: 7px solid #000;
-	margin-top: 1%;
-	margin-left: 1%;
+  margin: 15%;
+	margin-left: 12px;
 	transition: transform 0.0s ease-in-out;
 }
+    
+    .boutonHome:hover {
+      background-color: #818181;
+      color: white;
+      transform: scale(1.1);
+      
+    }
+    
+    .boutonHome:active {
+      border-bottom: 3px solid #000;
+    }
 
-.boutonHome:hover {
-	background-color: #818181;
-	color: white;
-	transform: scale(1.1);
-	
-}
-
-.boutonHome:active {
-	border-bottom: 3px solid #000;
-  }
+    .boutonHome i {
+        transform: scale(0.7); /* Ajustez la valeur selon vos besoins (0.8 pour 80% de la taille d'origine) */
+    }
 
   
  #acceuil{
@@ -232,19 +236,123 @@ main{
 		background-color: #0d8ecf;
 	}
 	
+	.headerPlay{
+		background-color: #3b3b3b;
+		  display: flex;
+		  align-items:start;
+		  margin-bottom: 5%;
+		background-size: initial;
+		}
 
-	#headerPlay{
+
+	  .bande {
 		display: flex;
-		justify-content: center;
-		align-items:start;
-		flex-direction: column;
-		margin-top: 1%;
-		margin-left: 1%;
-		margin-bottom: 2%;
-		width: 20%;
-	  }
+		align-items: center;   
+	}
+	
 
 /********************** LIBRARY ***************************************************/
+
+
+#headerPlay{
+	background-color: #3b3b3b;
+	display: flex;
+	align-items:start;
+	background-size: initial;
+}
+
+select {
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	-ms-appearance:none;
+	appearance:none;
+	outline:0;
+	box-shadow:none;
+	border:0!important;
+	background: #5c6664;
+	background-image: none;
+	flex: 1;
+	padding: 0 .5em;
+	color:#fff;
+	cursor:pointer;
+	font-size: 1.3em;
+	text-align: center;
+ 
+ }
+ select::-ms-expand {
+	display: none;
+ }
+ 
+ #parametreGame{
+   	display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 flex-direction: column;
+   color: white;
+ }
+ 
+ #selectGenre {
+	position: relative;
+	display: flex;
+	width: 17em;
+	height: 3em;
+	line-height: 3;
+	background: #5c6664;
+	overflow: hidden;
+	border-radius: .25em;
+ }
+ #selectGenre::after {
+	content: '\25BC';
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0 1em;
+	background: #3b3b3b;
+	cursor:pointer;
+	pointer-events:none;
+	transition:.25s all ease;
+ }
+ #selectGenre:hover::after {
+	color: #23b499;
+ }
+ 
+ #genre-select::after {
+   content: "&nbsp;";
+   display: block;
+   cursor: pointer;
+ }
+
+
+ #videosLib {
+    display: flex;
+    justify-content: space-between; /* Pour séparer les éléments horizontalement */
+    padding: 20px; /* Ajoutez un padding pour l'espace */
+}
+
+#video-container {
+	margin-left: 4%;
+    width: 100%; /* Définissez la largeur de la vidéo */
+}
+
+#videoNameDisplay{
+	color: white;
+	margin: auto;
+	font-size:xx-large;
+}
+
+#scrollable-area {
+    text-align: center;
+    color: aliceblue;
+    border: 2px solid #3b3b3b;
+    border-radius: 10px;
+    font-size: 20px;
+    overflow-y: scroll;
+	margin-right: 4%;
+    max-height: 350px; 
+    cursor: pointer;
+	width:40%;
+}
+
 
 
 	.carousel {
@@ -259,11 +367,13 @@ main{
 	  .categorieGame {
 		white-space: nowrap;
 		animation: scroll 20s linear infinite;
+		font-family: 'larsseitregular', sans-serif;
 
 	  }
 	  
 
 	  .block {
+		
 		display: inline-block;
 		width: 150px; /* Ajustez la largeur des blocs selon vos besoins */
 		height: 100px; /* Ajustez la hauteur des blocs selon vos besoins */
@@ -426,8 +536,6 @@ main{
     border-radius: 0.25em;
     border-right: none;
 }
-
-
 
 
 .highlight {

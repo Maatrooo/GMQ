@@ -7,6 +7,8 @@
 	<link rel="icon" type="image/png" href="../image/Logo.png" />
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel&family=Roboto+Slab&family=Roboto:wght@400;700&family=Press+Start+2P&family=Manga+Temple&family=Japanese+Brush&family=Waltograph&family=Disney+Print&family=Comic+Sans+MS&family=Chalkboard&family=Old+Standard+TT&family=Bangers&family=Kanji&family=Chicle&family=Orbitron&family=Caveat&family=Amatic+SC&display=swap">
+
 
 	<script src="../js/video-player.js"></script>
 </head>
@@ -14,28 +16,38 @@
 <body onload="createVideoList()">
 
 	<div id="headerPlay">
-		<a class="boutonHome" href="../index.html"><i class="fa fa-home"></i></a>
-
+		<div class="bande">
+			<a class="boutonHome" href="../index.html"><i class="fas fa-home"></i></a>	
+		</div>
 	</div>
 	
-	<select name="genre" id="genre-select" onchange="change_valeurlib();">
-		<option value="">Toute Catégorie</option>
-		<option value="Game">Jeux Video</option>
-		<option value="Film">Film</option>
-		<option value="80">Année 80</option>
-		<option value="AJap">Animé</option>
-		<option value="Disney">Disney</option>
-		<option value="DessinA">Dessin Animé</option>
-	</select>
-    
-    <video id="VideoSelec" width="500" height="300" controls>
-		<source src="VideoSelec" type="video/mp4">Your browser does not support HTML5 video.
-	</video>
-
-
-	<div id="scrollable-area">
-		<ul id="video-list"></ul>
+	<div id="parametreGame">
+		<h1>Parametre de la partie</h1>
+		<div id="selectGenre">
+			<select name="genre" id="genre-select" onchange="change_valeurlib();">
+				<option value="Game">Jeux Video</option>
+				<option value="Film">Film</option>
+				<option value="80">Années 80</option>
+				<option value="AJap">Animé</option>
+				<option value="Disney">Disney</option>
+				<option value="DessinA">Dessin Animé</option>
+			</select>
+		</div>
 	</div>
+    
+	<div id="videosLib">
+		<div id="video-container">
+			<video id="VideoSelec" width="500" height="300" controls>
+				<source src="VideoSelec" type="video/mp4">Your browser does not support HTML5 video.
+			</video>
+			<h2 id="videoNameDisplay"></h2>
+		</div>
+		
+		<div id="scrollable-area">
+			<ul id="video-list"></ul>
+		</div>
+	</div>
+	
 
 	<script>
 

@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function startGameMulti(selectedValue) {
   currentManche++;
-  document.getElementById("option").style.display = "none";
+  document.getElementById("parametreGame").style.display = "none";
   document.getElementById("gameContainer").style.display = "block";
   clearAnswerInput();
   manchevalue.innerText = currentManche;

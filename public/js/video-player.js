@@ -123,12 +123,16 @@ function chooseRandomVideo() {
     function selectVideo(listItem) {
         let videoSelec = document.getElementById("VideoSelec");
         let selectedVideoName = listItem.innerHTML;
-        
+
         let selectedVideo = videos.find(video => video.name === selectedVideoName);
         if (selectedVideo) {
             videoSelec.src = selectedVideo.path;
             videoSelec.load();
+
+            let videoNameDisplay = document.getElementById("videoNameDisplay");
+            videoNameDisplay.textContent = selectedVideoName;
         }
+        
     }
     
     function sortVideoListAlphabetically(videoList) {
@@ -154,6 +158,38 @@ function chooseRandomVideo() {
 
     function change_valeurlib() {
         createVideoList();
+
+        selectedCategory = document.getElementById("genre-select");
+         // Écoutez l'événement de changement de valeur du <select>
+        selectedCategory.addEventListener('change', function() {
+        // Récupérez la valeur sélectionnée
+        const selectedGenre = selectedCategory.value;
+        // Appliquez la police correspondante en fonction de la valeur sélectionnée
+        switch (selectedGenre) {
+            case 'Game':
+                document.body.style.fontFamily = "'Press Start 2P', sans-serif";
+                break;
+            case 'Film':
+                document.body.style.fontFamily = 'Cinzel', sans-serif;
+                break;
+            case '80':
+                document.body.style.fontFamily = 'Amatic SC', cursive;
+                break;
+            case 'AJap':
+                document.body.style.fontFamily = 'Orbitron', sans-serif;
+                break;
+            case 'Disney':
+                document.body.style.fontFamily = 'Bangers', sans-serif;
+                break;
+            case 'DessinA':
+                document.body.style.fontFamily = 'Caveat', sans-serif;
+                break;
+            
+            default:
+                document.body.style.fontFamily = 'larsseitregular', sans-serif;
+                break;
+        }
+    });
     }
     
 

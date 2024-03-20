@@ -297,23 +297,6 @@ border-bottom: 3px solid #000;
     align-items: center;
 }
 
-#volume {
-    width: 150px; /* Ajustez la largeur du curseur selon vos besoins */
-}
-
-#muteButton {
-    margin-left: 10px;
-    padding: 5px;
-    cursor: pointer;
-    background-color: #555;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-}
-
-#muteButton:hover {
-    background-color: #333;
-}
 
   
   #searchresults{
@@ -332,6 +315,23 @@ border-bottom: 3px solid #000;
     
   }
 
+  #volume {
+    width: 150px; /* Ajustez la largeur du curseur selon vos besoins */
+}
+
+#muteButton {
+    margin-left: 10px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+#muteButton:hover {
+    background-color: #333;
+}
 
 
   /********************Multi***********************/
