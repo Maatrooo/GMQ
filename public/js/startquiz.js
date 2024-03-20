@@ -17,7 +17,7 @@ function clearAnswerInput() {
 
 
 var currentManche = 0;
-var nombreDeManches = 2;
+var nombreDeManches = 10;
 
 function change_valeur(){
   select = document.getElementById('genre-select');
