@@ -100,9 +100,10 @@ function startGameMulti(selectedValue) {
       if (currentManche < nombreDeManches) {
         startGameMulti(selectedValue); // Tu relance un cylce
       } else {
-        // ici ecran de fin ou autre si jamais 
+        document.getElementById("gameContainer").style.display = "none"; 
         cache();
         muted();
+        document.getElementById("gameResult").style.display = "block";
       }
     }, 11000)
   }, 10000);
