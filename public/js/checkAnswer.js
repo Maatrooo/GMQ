@@ -7,10 +7,12 @@ function checkAnswer()
       console.log("Correct! +1 point");
       score++;
       scorevalue.innerText = score;
+      scorevalueresult.innerText = score;
       // reset game here
     }
   }
 
 function afficheS() {
   scorevalue.innerText = score;
+  scorevalueresult.innerText = score;
 }

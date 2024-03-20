@@ -17,7 +17,7 @@ function clearAnswerInput() {
 
 
 var currentManche = 0;
-var nombreDeManches = 10;
+var nombreDeManches = 2;
 
 function change_valeur(){
   select = document.getElementById('genre-select');
@@ -86,6 +86,7 @@ function startGame(){
             document.getElementById("gameContainer").style.display = "none"; 
             cache()
             muted()
+            document.getElementById("gameResult").style.display = "block";
         }
       }, 11000)
     }, 10000)
