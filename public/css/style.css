@@ -639,6 +639,39 @@ main{
 	
 }
 
+#video-list li
+{
+    font-weight: bold;
+    font-size: 1.5em;
+    width: 600px;
+    justify-content: space-between;
+    border: 4px dashed rgba(0, 0, 0, 0.20);
+    background: white;
+    margin: 10px;
+    /* margin-right: 1%; */
+    /* margin-left: 10%; */
+    text-decoration: none;
+    color: #3c3733;
+    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.05), 0 0.2em 0.5em rgba(0, 0, 0, 0.05);
+    padding: 10px;
+}
+
+#video-list li:hover
+{
+    font-weight: bold;
+    justify-content: space-between;
+    border: 4px dashed rgba(0, 0, 0, 0.20);
+    background: white;
+    margin: 10px;
+    text-decoration: none;
+    color: #3c3733;
+    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.05), 0 0.2em 0.5em rgba(0, 0, 0, 0.05);
+    padding: 10px;
+	margin-left: -5%;
+}
+
+
+
 #genre-select {
     padding: 8px;
     margin: 10px;
@@ -646,29 +679,49 @@ main{
     color: #333;
     background-color: #fff;
     border: none;
+    display: flex;
 
   }
 
+#background-video {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	position: fixed;
+	display: flex;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: -1;
+	filter: blur(10px);
+}
+
 #VideoSelec{
 	background-color: black;
-	display: block;
-	width: 25%;
+/*	display: block;*/
+	display: flex;
+	width: 45%;
 	height: auto;
 	margin-top: 3%;
 	margin-left:5%;
 	margin-right:auto;
 	border : 7px solid #818181;
-	position: absolute;
+/*	position: absolute;*/
 
 }
 
 #scrollable-area {
-	height: 300px; /* Hauteur maximale de la zone de défilement */
+/*	height: 310px;*/
+	height: 100%;
 	overflow-y: scroll; /* Activer le défilement vertical */
 	position: absolute;
-	display: block;
-	margin-left: 70%;
-	margin-top: 3%;	
+	right: 0px;
+	display: flex;
+	margin-left: 50%;
+	margin-top: 1%;	
+	margin-bottom: 5%;
+	margin-right: 1%;
 	color: aliceblue;
 	cursor: pointer;
   }
