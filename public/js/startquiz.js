@@ -73,14 +73,13 @@ function startGame(){
     chooseRandomVideo();
     mu()
     cache()
-    // Tu met juste la musique ici
     timer()
       setTimeout(() => {
-      affiche() // Tu affiche la réponse
+      affiche()
       checkAnswer()
       setTimeout(() => {
         if(currentManche < nombreDeManches){
-          startGame() // Tu relance un cylce
+          startGame()
         }
         else{
             document.getElementById("gameContainer").style.display = "none"; 
