@@ -207,7 +207,6 @@ server.listen(port, () => {
 
 
 
-let usedVideoIndexes = [];
 let videos;
 
 // Charger les vidéos depuis le fichier JSON
@@ -221,7 +220,7 @@ fetch("http://localhost:9821/json/video.json")
   .catch(error => console.error('Erreur lors du chargement des vidéos :', error));
 
 
-  let roomRequests = {}; // Variable pour garder une trace des demandes en attente par salle
+let roomRequests = {}; // Variable pour garder une trace des demandes en attente par salle
 let roomVideoStates = {}; // Dictionnaire pour stocker les vidéos utilisées par salle
 
 function chooseRandomVideoMulti(roomId, selectedGenre) {
