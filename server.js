@@ -221,81 +221,54 @@ fetch("http://localhost:9821/json/video.json")
   .catch(error => console.error('Erreur lors du chargement des vidéos :', error));
 
 
-  function chooseRandomVideoMulti(roomId, selectedGenre) {
-    console.log(`[DEBUG:] Chosen genre for room ${roomId}: ${selectedGenre}`);
-    if (!videos) {
+  let roomRequests = {}; // Variable pour garder une trace des demandes en attente par salle
+let roomVideoStates = {}; // Dictionnaire pour stocker les vidéos utilisées par salle
+
+function chooseRandomVideoMulti(roomId, selectedGenre) {
+  console.log(`[DEBUG:] Chosen genre for room ${roomId}: ${selectedGenre}`);
+
+  if (!videos) {
       console.error('Les vidéos ne sont pas chargées. Assurez-vous que le chargement est terminé avant d\'appeler chooseRandomVideoMulti.');
       return;
-    }
-  
-    const option = selectedGenre;
-    console.log(option);
-  
-    const filteredVideos = videos.filter(video => !video.selected && video.genre === option);
-  
-    if (filteredVideos.length === 0) {
-      videos.forEach(video => {
-        video.selected = false;
-      });
-    } else {
-      const randomIndex = Math.floor(Math.random() * filteredVideos.length);
-      const selectedVideo = filteredVideos[randomIndex];
-  
-      selectedVideo.selected = true;
-  
-      // Émettre un événement à tous les clients pour informer de la nouvelle vidéo
-      io.to(roomId).emit('newRoundVideo', { videoUrl: selectedVideo.path, videoName: selectedVideo.name });
-    }
   }
-  
 
-// Middleware pour analyser les données POST
-app.use(express.urlencoded({ extended: true }));
+  // Vérifier s'il y a déjà une demande en attente pour cette salle
+  if (roomRequests[roomId]) {
+      console.log(`[DEBUG:] Il y a déjà une demande en attente pour la salle ${roomId}. Ignorer la demande actuelle.`);
+      return;
+  }
 
-app.post('/ajouter-video', async (req, res) => {
-    const { lien_youtube, nom, genre } = req.body;
+  const option = selectedGenre;
+  console.log(`[DEBUG:] Genre sélectionné: ${option}`);
 
-    // Télécharger la vidéo
-    const videoInfo = await ytdl.getInfo(lien_youtube);
-    const videoTitle = videoInfo.videoDetails.title;
-    const videoStream = ytdl(lien_youtube, { quality: 'highest' });
+  // Filtrer les vidéos qui n'ont pas encore été utilisées dans cette salle et qui correspondent au genre sélectionné
+  const filteredVideos = videos.filter(video => (!roomVideoStates[roomId] || !roomVideoStates[roomId].includes(videos.indexOf(video))) && video.genre === option);
 
-    videoStream.pipe(fs.createWriteStream(`./public/Video/${videoTitle}.mp4`));
+  if (filteredVideos.length === 0) {
+      console.error('Aucune vidéo disponible pour ce genre dans cette salle ou toutes les vidéos ont déjà été utilisées.');
+      return;
+  }
 
-    // Enregistrer les informations dans un fichier JSON
-    const videoData = {
-      name: nom,
-      path: `../Video/${videoTitle}.mp4`,
-      genre: genre,
-      selected: false
-    };
+  const randomIndex = Math.floor(Math.random() * filteredVideos.length);
+  const selectedVideo = filteredVideos[randomIndex];
 
-    // Chemin vers le fichier JSON
-    const jsonFilePath = './public/json/video.json';
+  // Ajouter l'index de la vidéo choisie à la liste des vidéos utilisées pour cette salle
+  if (!roomVideoStates[roomId]) {
+      roomVideoStates[roomId] = [];
+  }
+  roomVideoStates[roomId].push(videos.indexOf(selectedVideo));
 
-    // Lire le contenu du fichier JSON
-    fs.readFile(jsonFilePath, 'utf8', (err, data) => {
-      if (err) {
-          console.error('Erreur lors de la lecture du fichier JSON :', err);
-          return;
-      }
+  // Émettre un événement à tous les clients de la salle pour informer de la nouvelle vidéo
+  io.to(roomId).emit('newRoundVideo', { videoUrl: selectedVideo.path, videoName: selectedVideo.name });
+  console.log(`[DEBUG:] Nouvelle vidéo sélectionnée pour la salle ${roomId}: ${selectedVideo.name}`);
 
-      let jsonData = JSON.parse(data);
-      let videos = jsonData.videos;
+  // Enregistrer la demande en attente pour cette salle
+  roomRequests[roomId] = true;
+  console.log(`[DEBUG:] Demande enregistrée pour la salle ${roomId}`);
 
-      // Ajouter les nouvelles données à l'objet
-      videos.push(videoData);
-
-      // Convertir le tableau JavaScript en format JSON
-      jsonData = JSON.stringify(jsonData, null, 2);
-
-      // Écrire le contenu JSON dans le fichier
-      fs.writeFile(jsonFilePath, jsonData, (err) => {
-          if (err) {
-              console.error('Erreur lors de l\'écriture du fichier JSON :', err);
-              return;
-          }
-          console.log('Données enregistrées dans le fichier JSON avec succès.');
-      });
-    });
-});
+  // Réinitialiser la demande après un certain délai
+  setTimeout(() => {
+      delete roomRequests[roomId];
+      console.log(`[DEBUG:] Demande réinitialisée pour la salle ${roomId}`);
+  }, 2000); // ajustez la durée selon vos besoins
+}

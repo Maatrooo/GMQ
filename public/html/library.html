@@ -13,37 +13,36 @@
 </head>
 
 <body onload="createVideoList()">
-
 	<div id="scrollable-area">
 		<ul id="video-list" style="list-style-type: none;"></ul>
 	</div>
 	<div id="headerPlay" style="display: flex;">
+		<a class="boutonHome" href="../index.html"><i class="fa fa-home"></i></a>
+
+	</div>
+	<div id="headerPlay" style="display: flex;">
 		<a id="boutonHome" href="../index.html"><i class="fa fa-home"></i></a>
 	
-			<div id="selectGenre">
-				<select name="genre" id="genre-select" onchange="change_valeurlib();">
-					<option value="Game">Jeux Video</option>
-					<option value="Film">Film</option>
-					<option value="80">Années 80</option>
-					<option value="AJap">Animé</option>
-					<option value="Disney">Disney</option>
-					<option value="DessinA">Dessin Animé</option>
-				</select>
-			</div>
-	</div>
-	
-	
+	<select name="genre" id="genre-select" onchange="change_valeurlib();" style="display: flex;">
+		<option value="">Toute Catégorie</option>
+		<option value="Game">Jeux Video</option>
+		<option value="Film">Film</option>
+		<option value="80">Année 80</option>
+		<option value="AJap">Animé</option>
+		<option value="Disney">Disney</option>
+		<option value="DessinA">Dessin Animé</option>
+	</select>
     
-	<video controls autoplay preload="auto" id="VideoSelec" width="500" height="300" >
+    <video controls autoplay preload="auto" id="VideoSelec" width="500" height="300" >
 		<source src="VideoSelec" type="video/mp4">Your browser does not support HTML5 video.
 	</video>
 
 	<video controls autoplay preload="auto" id="background-video" width="500" height="300" disablepictureinpicture muted>
 		<source src="VideoSelec" type="video/mp4">Your browser does not support HTML5 video.
 	</video>
-	<h2 id="videoNameDisplay"></h2>
-	
-	
+
+
+
 	<script>
 
 		const images = document.querySelector('#scrollable-area');
@@ -52,12 +51,15 @@
 			  images.removeChild(firstImage);
 			  images.appendChild(firstImage);
 		});
+
 	</script>
 	
+
 	<script>
-		var video = document.getElementById("background-video");
-		video.controls = false;
+	var video = document.getElementById("background-video");
+	video.controls = false;
 	</script>
- 
+
+
 </body>
 </html>

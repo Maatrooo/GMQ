@@ -863,24 +863,6 @@
       "path": "../Video/Phinéas et Ferb - Générique.mp4",
       "genre": "DessinA",
       "selected": false
-    },
-    {
-      "name": "la Pat' Patrouille",
-      "path": "../Video/Paw Patrol : la Pat' Patrouille | Générique | NICKELODEON JUNIOR.mp4",
-      "genre": "DessinA",
-      "selected": false
-    },
-    {
-      "name": "Vaiana, la légende du bout du monde - Le Bleu Lumière",
-      "path": "../Video/Vaiana, la légende du bout du monde - Le Bleu Lumière I Disney.mp4",
-      "genre": "Disney",
-      "selected": false
-    },
-    {
-      "name": "Vaiana, la légende du bout du monde - Pour les hommes",
-      "path": "../Video/Vaiana, la légende du bout du monde - Pour les hommes I Disney.mkv",
-      "genre": "Disney",
-      "selected": false
     }
   ]
 }

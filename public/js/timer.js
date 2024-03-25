@@ -23,7 +23,6 @@ function cache(){
     document.getElementById("videoSource").style.visibility="hidden";
     document.getElementById("timer-display").style.display = "block";
     document.getElementById("videoName").style.display = "none";
-
 }
 
   
