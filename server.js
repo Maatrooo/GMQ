@@ -222,48 +222,53 @@ fetch("http://localhost:9821/json/video.json")
 
 
   let roomRequests = {}; // Variable pour garder une trace des demandes en attente par salle
+let roomVideoStates = {}; // Dictionnaire pour stocker les vidéos utilisées par salle
 
-  function chooseRandomVideoMulti(roomId, selectedGenre) {
-      console.log(`[DEBUG:] Chosen genre for room ${roomId}: ${selectedGenre}`);
-  
-      if (!videos) {
-          console.error('Les vidéos ne sont pas chargées. Assurez-vous que le chargement est terminé avant d\'appeler chooseRandomVideoMulti.');
-          return;
-      }
-  
-      // Vérifier s'il y a déjà une demande en attente pour cette salle
-      if (roomRequests[roomId]) {
-          console.log(`[DEBUG:] Il y a déjà une demande en attente pour la salle ${roomId}. Ignorer la demande actuelle.`);
-          return;
-      }
-  
-      const option = selectedGenre;
-      console.log(`[DEBUG:] Genre sélectionné: ${option}`);
-  
-      const filteredVideos = videos.filter(video => !video.selected && video.genre === option);
-  
-      if (filteredVideos.length === 0) {
-          console.error('Aucune vidéo disponible pour cette salle ou toutes les vidéos ont déjà été utilisées.');
-          return;
-      }
-  
-      const randomIndex = Math.floor(Math.random() * filteredVideos.length);
-      const selectedVideo = filteredVideos[randomIndex];
-  
-      selectedVideo.selected = true;
-  
-      // Émettre un événement à tous les clients de la room pour informer de la nouvelle vidéo
-      io.to(roomId).emit('newRoundVideo', { videoUrl: selectedVideo.path, videoName: selectedVideo.name });
-      console.log(`[DEBUG:] Nouvelle vidéo sélectionnée pour la salle ${roomId}: ${selectedVideo.name}`);
-  
-      // Enregistrer la demande en attente pour cette salle
-      roomRequests[roomId] = true;
-      console.log(`[DEBUG:] Demande enregistrée pour la salle ${roomId}`);
-  
-      // Réinitialiser la demande après un certain délai
-      setTimeout(() => {
-          delete roomRequests[roomId];
-          console.log(`[DEBUG:] Demande réinitialisée pour la salle ${roomId}`);
-      }, 10000); // ajustez la durée selon vos besoins
+function chooseRandomVideoMulti(roomId, selectedGenre) {
+  console.log(`[DEBUG:] Chosen genre for room ${roomId}: ${selectedGenre}`);
+
+  if (!videos) {
+      console.error('Les vidéos ne sont pas chargées. Assurez-vous que le chargement est terminé avant d\'appeler chooseRandomVideoMulti.');
+      return;
   }
-  
+
+  // Vérifier s'il y a déjà une demande en attente pour cette salle
+  if (roomRequests[roomId]) {
+      console.log(`[DEBUG:] Il y a déjà une demande en attente pour la salle ${roomId}. Ignorer la demande actuelle.`);
+      return;
+  }
+
+  const option = selectedGenre;
+  console.log(`[DEBUG:] Genre sélectionné: ${option}`);
+
+  // Filtrer les vidéos qui n'ont pas encore été utilisées dans cette salle et qui correspondent au genre sélectionné
+  const filteredVideos = videos.filter(video => (!roomVideoStates[roomId] || !roomVideoStates[roomId].includes(videos.indexOf(video))) && video.genre === option);
+
+  if (filteredVideos.length === 0) {
+      console.error('Aucune vidéo disponible pour ce genre dans cette salle ou toutes les vidéos ont déjà été utilisées.');
+      return;
+  }
+
+  const randomIndex = Math.floor(Math.random() * filteredVideos.length);
+  const selectedVideo = filteredVideos[randomIndex];
+
+  // Ajouter l'index de la vidéo choisie à la liste des vidéos utilisées pour cette salle
+  if (!roomVideoStates[roomId]) {
+      roomVideoStates[roomId] = [];
+  }
+  roomVideoStates[roomId].push(videos.indexOf(selectedVideo));
+
+  // Émettre un événement à tous les clients de la salle pour informer de la nouvelle vidéo
+  io.to(roomId).emit('newRoundVideo', { videoUrl: selectedVideo.path, videoName: selectedVideo.name });
+  console.log(`[DEBUG:] Nouvelle vidéo sélectionnée pour la salle ${roomId}: ${selectedVideo.name}`);
+
+  // Enregistrer la demande en attente pour cette salle
+  roomRequests[roomId] = true;
+  console.log(`[DEBUG:] Demande enregistrée pour la salle ${roomId}`);
+
+  // Réinitialiser la demande après un certain délai
+  setTimeout(() => {
+      delete roomRequests[roomId];
+      console.log(`[DEBUG:] Demande réinitialisée pour la salle ${roomId}`);
+  }, 2000); // ajustez la durée selon vos besoins
+}
