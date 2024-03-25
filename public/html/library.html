@@ -9,49 +9,44 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel&family=Roboto+Slab&family=Roboto:wght@400;700&family=Press+Start+2P&family=Manga+Temple&family=Japanese+Brush&family=Waltograph&family=Disney+Print&family=Comic+Sans+MS&family=Chalkboard&family=Old+Standard+TT&family=Bangers&family=Kanji&family=Chicle&family=Orbitron&family=Caveat&family=Amatic+SC&display=swap">
 
-
 	<script src="../js/video-player.js"></script>
 </head>
 
 <body onload="createVideoList()">
 
-	<div id="headerPlay">
-		<div class="bande">
-			<a class="boutonHome" href="../index.html"><i class="fas fa-home"></i></a>	
-		</div>
+	<div id="scrollable-area">
+		<ul id="video-list" style="list-style-type: none;"></ul>
+	</div>
+	<div id="headerPlay" style="display: flex;">
+		<a id="boutonHome" href="../index.html"><i class="fa fa-home"></i></a>
+	
+			<div id="selectGenre">
+				<select name="genre" id="genre-select" onchange="change_valeurlib();">
+					<option value="Game">Jeux Video</option>
+					<option value="Film">Film</option>
+					<option value="80">Années 80</option>
+					<option value="AJap">Animé</option>
+					<option value="Disney">Disney</option>
+					<option value="DessinA">Dessin Animé</option>
+				</select>
+			</div>
 	</div>
 	
-	<div id="parametreGame">
-		<h1>Parametre de la partie</h1>
-		<div id="selectGenre">
-			<select name="genre" id="genre-select" onchange="change_valeurlib();">
-				<option value="Game">Jeux Video</option>
-				<option value="Film">Film</option>
-				<option value="80">Années 80</option>
-				<option value="AJap">Animé</option>
-				<option value="Disney">Disney</option>
-				<option value="DessinA">Dessin Animé</option>
-			</select>
-		</div>
-	</div>
+	
     
-	<div id="videosLib">
-		<div id="video-container">
-			<video id="VideoSelec" width="500" height="300" controls>
-				<source src="VideoSelec" type="video/mp4">Your browser does not support HTML5 video.
-			</video>
-			<h2 id="videoNameDisplay"></h2>
-		</div>
-		
-		<div id="scrollable-area">
-			<ul id="video-list"></ul>
-		</div>
-	</div>
-	
+	<video controls autoplay preload="auto" id="VideoSelec" width="500" height="300" >
+		<source src="VideoSelec" type="video/mp4">Your browser does not support HTML5 video.
+	</video>
 
+	<video controls autoplay preload="auto" id="background-video" width="500" height="300" disablepictureinpicture muted>
+		<source src="VideoSelec" type="video/mp4">Your browser does not support HTML5 video.
+	</video>
+	<h2 id="videoNameDisplay"></h2>
+	
+	
 	<script>
 
-		const images = document.querySelector('.images');
+		const images = document.querySelector('#scrollable-area');
 		images.addEventListener('animationiteration', () => {
 			  const firstImage = images.firstElementChild;
 			  images.removeChild(firstImage);
@@ -59,14 +54,10 @@
 		});
 	</script>
 	
-	<div class="carousel">
-		<div class="categorieGame">
-		  <div class="block jeu-video">Jeux Vidéo</div><div class="block film">Film</div><div class="block annees-80">Années 80</div><div class="block anime">Animé</div><div class="block disney">Disney</div><div class="block dessin-anime">Dessin Animé</div>
-		  <div class="block jeu-video">Jeux Vidéo</div><div class="block film">Film</div><div class="block annees-80">Années 80</div><div class="block anime">Animé</div><div class="block disney">Disney</div><div class="block dessin-anime">Dessin Animé</div>
-		  <div class="block jeu-video">Jeux Vidéo</div><div class="block film">Film</div><div class="block annees-80">Années 80</div><div class="block anime">Animé</div><div class="block disney">Disney</div><div class="block dessin-anime">Dessin Animé</div>
-		  <div class="block jeu-video">Jeux Vidéo</div><div class="block film">Film</div><div class="block annees-80">Années 80</div><div class="block anime">Animé</div><div class="block disney">Disney</div><div class="block dessin-anime">Dessin Animé</div>
-		</div>
-	</div>
+	<script>
+		var video = document.getElementById("background-video");
+		video.controls = false;
+	</script>
  
 </body>
 </html>

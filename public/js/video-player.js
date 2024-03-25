@@ -119,15 +119,17 @@ function chooseRandomVideo() {
     }
     
     
-
     function selectVideo(listItem) {
         let videoSelec = document.getElementById("VideoSelec");
         let selectedVideoName = listItem.innerHTML;
+        let background_video = document.getElementById("background-video");
 
         let selectedVideo = videos.find(video => video.name === selectedVideoName);
         if (selectedVideo) {
             videoSelec.src = selectedVideo.path;
             videoSelec.load();
+            background_video.src = selectedVideo.path;
+            background_video.load();
 
             let videoNameDisplay = document.getElementById("videoNameDisplay");
             videoNameDisplay.textContent = selectedVideoName;

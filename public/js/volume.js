@@ -2,9 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
 					var video = document.getElementById("videoSource");
 					const volumeSlider = document.getElementById('volume');
 					const muteButton = document.getElementById('muteButton');
-			
-
-                    
 					muteButton.addEventListener('click', toggleMute);
 					volumeSlider.addEventListener('input', setVolume);
 	
