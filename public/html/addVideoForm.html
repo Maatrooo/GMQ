@@ -4,20 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire d'ajout de vidéo</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/styleConnexion.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
 </head>
 <body>
-    <h1>Formulaire d'ajout de vidéo</h1>
-    <form action="../php/mail.php" method="POST">
-        <label for="lien_youtube">Lien YouTube :</label><br>
-        <input type="text" id="lien_youtube" name="lien_youtube"><br>
+    <div class="headerPlay">
+        <div class="bande">
+            <a class="boutonHome" href="../index.html"><i class="fas fa-home"></i></a>	
+        </div>
+        <div class="logo-container-petit">
+            <div class="logo-letter g"> G </div>
+            <div class="logo-letter m"> M </div>
+            <div class="logo-letter q"> Q </div>
+        </div>
+    </div>
+    
+    
+    <div class="ajoutVideo-container">
+        <h1>Formulaire d'ajout de vidéo</h1>
+        <form id="formAjout" action="../php/mail.php" method="POST">
+            <label for="lien_youtube">Lien YouTube :</label><br>
+            <input type="text" id="lien_youtube" name="lien_youtube"><br>
 
-        <label for="nom">Nom de la vidéo :</label><br>
-        <input type="text" id="nom_video" name="nom"><br>
+            <label for="nom">Nom de la vidéo :</label><br>
+            <input type="text" id="nom_video" name="nom"><br>
 
-        <label for="genre">Genre :</label><br>
-        <input type="text" id="genre_video" name="genre"><br><br>
+            <label for="genre">Genre :</label><br>
+            <input type="text" id="genre_video" name="genre"><br><br>
 
-        <button type="submit">Envoyer</button>
-    </form>
+            <button id="boutonSign"  type="submit">Envoyer</button>
+        </form>
 </body>
 </html>

@@ -13,85 +13,21 @@ body
     background-attachment: fixed;
 }
 
-
-
-.login-container {
-    max-width: 300px;
-    margin: auto; /* Centrez le formulaire horizontalement et verticalement */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-h1{
-    border:3px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin-bottom: 5px;
-}
-
-input {
-	width: 90%; /* Le bouton occupera 100% de la largeur du conteneur */
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-#boutonSign{
-	width: 100px; 
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
-
-
-.password-container {
-    position: relative;
-    display: flex;
-}
-
-input[type="password"] {
-    width: 90%; /* Utilisez 100% de la largeur disponible dans le conteneur */
-}
-
-
-.toggle-icon {
-	font-size: 20px;
-    position: absolute;
-    right: 15px; 
-    top: 30%;
-    transform: translateY(-50%);
-	cursor: pointer;
-}
-
-
 .headerPlay{
 
 	display: flex;
+    flex-direction: row;
 	align-items:start;
 	margin-bottom: 2%;
-  background-size: initial;
+    background-size: initial;
+    background-color: #3b3b3b;
   }
 
   .bande {
     display: flex;
     align-items: center;   
 }
+
 
 
 .boutonHome {
@@ -123,3 +59,139 @@ input[type="password"] {
     .boutonHome i {
         transform: scale(0.7); /* Ajustez la valeur selon vos besoins (0.8 pour 80% de la taille d'origine) */
     }
+
+
+.logo-container-petit {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 4rem;
+    color: white;
+    line-height: 1;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.logo-letter.g {
+    z-index: 1;
+    left: 2.8rem;
+    color : rgb(255, 255, 255);
+    text-shadow: 3px 6px 0 rgb(0, 0, 0);
+}
+
+.logo-letter.m {
+    left: 5.5rem;
+    z-index: 0;
+    color : rgb(255, 255, 255);
+    text-shadow: 3px 6px 0 rgb(0, 0, 0);
+}
+
+.logo-letter.q {
+    z-index: 1;
+    left: 8.5rem;
+    color : rgb(255, 255, 255);
+    text-shadow: 3px 6px 0 rgb(0, 0, 0);
+}
+
+
+
+.login-container {
+    max-width: 300px;
+    margin: auto; /* Centrez le formulaire horizontalement et verticalement */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h1{
+    border:3px;
+    color: white;
+    
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+	width: 90%; /* Le bouton occupera 100% de la largeur du conteneur */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#boutonSign{
+	width: 100px; 
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    margin :auto;
+    border: 4px dashed rgba(0, 0, 0, 0.20);
+}
+
+
+.password-container {
+    position: relative;
+    display: flex;
+}
+
+input[type="password"] {
+    width: 90%; /* Utilisez 100% de la largeur disponible dans le conteneur */
+}
+
+
+.toggle-icon {
+	font-size: 20px;
+    position: absolute;
+    right: 15px; 
+    top: 30%;
+    transform: translateY(-50%);
+	cursor: pointer;
+}
+
+
+
+
+
+    /******************* ADD VIDEO ***********************/
+    
+    .ajoutVideo-container {
+        max-width: 450px;
+        margin: auto; /* Centrez le formulaire horizontalement et verticalement */
+        padding: 20px;
+        border-radius: 8px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+
+    #formAjout {
+        background-color:#3b3b3b;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        color:white;
+    }
+
+
+    
+    

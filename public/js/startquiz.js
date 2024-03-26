@@ -65,7 +65,7 @@ function change_valeur(){
 function startGame(){
   console.log('startGame called');
     currentManche++;
-    document.getElementById("parametreGame").style.display = "none";
+    document.getElementById("option").style.display = "none";
     document.getElementById("gameContainer").style.display = "block";
     clearAnswerInput()
     manchevalue.innerText = currentManche;

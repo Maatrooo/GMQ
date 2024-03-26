@@ -130,6 +130,9 @@ function chooseRandomVideo() {
             videoSelec.load();
             background_video.src = selectedVideo.path;
             background_video.load();
+
+            let videoNameDisplay = document.getElementById("videoNameDisplay");
+            videoNameDisplay.textContent = selectedVideoName;
         }
         
     }

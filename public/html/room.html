@@ -17,14 +17,19 @@
 </head>
 
 <body>
+
 	<div class="headerPlay">
-		<div class="bande">
-			<a class="boutonHome" href="../html/multiplayer.html"><i class="fas fa-home"></i></a>	
-		</div>
-	</div>
+        <div class="bande">
+            <a class="boutonHome" href="../html/multiplayer.html"><i class="fa fa-long-arrow-alt-left"></i></a>	
+        </div>
+        <div class="logo-container-petit">
+            <div class="logo-letter g"> G </div>
+            <div class="logo-letter m"> M </div>
+            <div class="logo-letter q"> Q </div>
+        </div>
+    </div>
 
-
-	<div id="parametreGame">
+	<div id="option">
 		<h1>Choix de la catégorie</h1>
 		<div id="selectGenre">
 			<select name="genre" id="genre-select" onchange="change_valeur();">
@@ -35,8 +40,9 @@
 				<option value="Disney">Disney</option>
 				<option value="DessinA">Dessin Animé</option>
 			</select>
-		</div>
 
+
+		</div>
 		<button id="startBtn" onclick="console.log('Room ID:', roomId); socket.emit('requestStartGame', { roomId }); socket.emit('SuppAffichage', { roomId });"><i class="fas fa-caret-right"></i> Start <i class="fas fa-caret-left"></i></button>
 	</div>
 
@@ -55,31 +61,37 @@
 				<p id="manche-display"><span id="manchevalue"></span> / <span id="maxmanchevalue"></span> </p>
 				<p id="score-display">Score: <span id="scorevalue">0</span></p>
 			</div>
-	
+		
 			<div class="FormatTextP">
 				<div class="timerP" id="timer-display"></div>
 				<div><p id="videoName"></p></div>
 			</div>
 		
 			<div id="videoPlayer">		
-				<video id="videoSource" style="visibility: hidden;" preload="none" disablepictureinpicture>
+				<video id="videoSource" style="visibility: hidden;" disablepictureinpicture>
 					<source id="videoSource" type="video/mp4">
 				</video>
 			</div>
 		</div>
-			
 	
 		<div id="answer-form">
-			<input class="Reponse1" type="text" id="answer-input" name="answer" onkeyup="searchVideos()"></input>		
+			<input class="Reponse1" type="text" id="answer-input" name="answer" onkeyup="searchVideos()"></input>
+		</div>
+
+		<div class="sidebarScore">
+			
 		</div>
 		
 		<ul id="searchresults"></ul>
 	
 	
 	</div>
+
 	<div id="gameResult" style="display: none;">
 		<p id="score-display">Score: <span id="scorevalueresult">0</span></p>
 	</div>
 	
-</body>
-</html>
+	</body>
+	
+	
+	</html>

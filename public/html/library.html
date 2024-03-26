@@ -7,7 +7,6 @@
 	<link rel="icon" type="image/png" href="../image/Logo.png" />
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel&family=Roboto+Slab&family=Roboto:wght@400;700&family=Press+Start+2P&family=Manga+Temple&family=Japanese+Brush&family=Waltograph&family=Disney+Print&family=Comic+Sans+MS&family=Chalkboard&family=Old+Standard+TT&family=Bangers&family=Kanji&family=Chicle&family=Orbitron&family=Caveat&family=Amatic+SC&display=swap">
 
 	<script src="../js/video-player.js"></script>
 </head>
@@ -17,21 +16,20 @@
 		<ul id="video-list" style="list-style-type: none;"></ul>
 	</div>
 	<div id="headerPlay" style="display: flex;">
-		<a class="boutonHome" href="../index.html"><i class="fa fa-home"></i></a>
-
-	</div>
-	<div id="headerPlay" style="display: flex;">
 		<a id="boutonHome" href="../index.html"><i class="fa fa-home"></i></a>
 	
-	<select name="genre" id="genre-select" onchange="change_valeurlib();" style="display: flex;">
-		<option value="">Toute Catégorie</option>
-		<option value="Game">Jeux Video</option>
-		<option value="Film">Film</option>
-		<option value="80">Année 80</option>
-		<option value="AJap">Animé</option>
-		<option value="Disney">Disney</option>
-		<option value="DessinA">Dessin Animé</option>
-	</select>
+			<div id="selectGenre">
+				<select name="genre" id="genre-select" onchange="change_valeurlib();">
+					<option value="Game">Jeux Video</option>
+					<option value="Film">Film</option>
+					<option value="80">Années 80</option>
+					<option value="AJap">Animé</option>
+					<option value="Disney">Disney</option>
+					<option value="DessinA">Dessin Animé</option>
+				</select>
+			</div>
+	</div>
+	
     
     <video controls autoplay preload="auto" id="VideoSelec" width="500" height="300" >
 		<source src="VideoSelec" type="video/mp4">Your browser does not support HTML5 video.
@@ -40,6 +38,7 @@
 	<video controls autoplay preload="auto" id="background-video" width="500" height="300" disablepictureinpicture muted>
 		<source src="VideoSelec" type="video/mp4">Your browser does not support HTML5 video.
 	</video>
+	<h2 id="videoNameDisplay"></h2>
 
 
 
