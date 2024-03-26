@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   	<meta charset="UTF-8">
-  	<link rel="stylesheet" type="text/css" href="../css/style.css"> 
+  	<link rel="stylesheet" type="text/css" href="../css/styleSolo.css"> 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   	<script src="https://cdn.socket.io/4.1.3/socket.io.min.js"></script>
@@ -12,6 +12,7 @@
 	<script src="../js/video-player.js"></script>
 	<script src="../js/checkAnswer.js"></script>
 	<script src="../js/startquizmulti.js"></script>
+	<script src="../js/volume.js"></script>
 	<title>Multiplayer</title>    
 </head>
 
@@ -50,7 +51,10 @@
 	
 	<div id="gameContainer" style="display: none;">	 
 
-		<p id="manche-display"><span id="manchevalue"></span> / <span id="maxmanchevalue"></span> </p>
+		<div id="volume-container">
+			<button id="muteButton" class="fas fa-volume-up"></button>
+			<input type="range" id="volume" min="0" max="100" value="0" step="1">
+		</div>
 	
 		<div class="round">
 			<div class="mancheEtScore">
