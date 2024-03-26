@@ -94,7 +94,7 @@ main{
 	font-size: 2.5rem;
 	border-radius: 1rem;
 	border-bottom: 7px solid #000;
-  margin: 15%;
+  	margin: 15%;
 	margin-left: 12px;
 	transition: transform 0.0s ease-in-out;
 }
@@ -242,16 +242,18 @@ main{
 /********************** LIBRARY ***************************************************/
 
 
-.headerPlay{
-	background-color: #3b3b3b;
-	  display: flex;
+#headerPlay{
+	display: flex;
+	justify-content: center;
+	align-items:start;
 	flex-direction: row;
-	  align-items:start;
-	  margin-bottom: 2%;
-	background-size: initial;
+	margin-bottom: 1%;
+	width: 32%;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	padding: 6px;
 	}
   
-	.bande {
+	#bande {
 	  display: flex;
 	  align-items: center;   
   }
@@ -394,6 +396,20 @@ main{
 
 
 /************************************* Multi **********************************/
+
+.headerPlay{
+	background-color: #3b3b3b;
+	  display: flex;
+	flex-direction: row;
+	  align-items:start;
+	  margin-bottom: 2%;
+	background-size: initial;
+	}
+  
+	.bande {
+	  display: flex;
+	  align-items: center;   
+  }
 
 
 #create-room {
