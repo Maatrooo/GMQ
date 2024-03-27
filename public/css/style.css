@@ -357,40 +357,31 @@ main{
 		color: #23b499;
 	 }
 	
-	  
-
+	 @media screen and (max-width: 768px) {
+		/* Styles spécifiques aux appareils mobiles */
+		#headerPlay {
+			flex-direction: column; /* Affichage en colonne pour les appareils mobiles */
+			align-items: center; /* Centrer les éléments */
+		}
+	
+		#boutonHome {
+			margin-right: 0; /* Supprimer la marge à droite pour les appareils mobiles */
+			margin-bottom: 1em; /* Ajouter un espace sous le bouton */
+		}
+	
+		#selectGenre {
+			width: 100%; /* Prendre la largeur totale de l'écran */
+			margin-top: 1em; /* Ajouter un espace au-dessus du select */
+		}
+	
+		/* Autres styles spécifiques aux appareils mobiles */
+	}
+	
 	  
 	  @keyframes scroll {
 		0% { transform: translateX(0); }
 		100% { transform: translateX(-100%); }
 	  }
-	  
-
-
-.boutonLibrary {
-	background-color: #3b3b3b;
-	border: none;
-	color: white;
-	padding: 1% 2% 1% 2%;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 2rem;
-	margin: auto;
-	position: sticky;
-		
-		
-		}
-		
-		.boutonLibrary:hover {
-			background-color: #818181;
-		
-		}
-		
-		.boutonLibrary strong {
-			font-size: 1.5rem;
-		
-		}
 
 
 
@@ -810,7 +801,7 @@ main{
 #videoNameDisplay{
 	color: white;
 	margin-left: 5%;
-	font-size:80%;
+	font-size:xx-large;
 }
 
 

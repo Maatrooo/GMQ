@@ -32,8 +32,19 @@
             <label for="nom">Nom de la vidéo :</label><br>
             <input type="text" id="nom_video" name="nom"><br>
 
+            
             <label for="genre">Genre :</label><br>
-            <input type="text" id="genre_video" name="genre"><br><br>
+            <div id="selectGenre">
+                <select name="genre" id="genre-video">
+                    <option value="Game">Jeux Video</option>
+                    <option value="Film">Film</option>
+                    <option value="80">Années 80</option>
+                    <option value="AJap">Animé</option>
+                    <option value="Disney">Disney</option>
+                    <option value="DessinA">Dessin Animé</option>
+                </select>
+            </div>
+            <br><br>
 
             <button id="boutonSign"  type="submit">Envoyer</button>
         </form>
